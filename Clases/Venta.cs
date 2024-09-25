@@ -30,7 +30,9 @@ namespace Clases
 
         private void validar()
         {
-            ValidarSaldoParaVenta();
+          //Este Metodo de ValidarSaldoParaVenta no se tendria que correr al momento que un usuario quiera hacer una compra?
+          //Dejo este metodo comentado ->
+          //  ValidarSaldoParaVenta();
         }
 
         private void ValidarSaldoParaVenta()

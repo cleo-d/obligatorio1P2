@@ -55,36 +55,45 @@ namespace Clases
             }
             return articulosPorCategoria;
         }
-        
-        //public List<Articulo> PublicacionesEntreFechas(DateTime primerFecha,DateTime segundaFecha)
-        //{
-        //    List<Articulo> articulosEntreFechas = new List<Articulo>();
-        //    foreach (Articulo articulo in _articulos)
-        //    {
 
-                
-        //    }
-        //    return articulosEntreFechas;
+        //Funcion para agregar un articulo
+        public void darAltaArticulo(string unNombre, string unaCategoria, double unPrecio)
+        {
 
-        //}
+            Articulo a = new Articulo(unNombre,unaCategoria,unPrecio);
+            _articulos.Add(a);
+
+        }
+
+        //Funcion para listar publicaciones dentro de determinadas fechas
+        public List<Publicacion> PublicacionesEntreFechas(DateTime primerFecha, DateTime segundaFecha)
+        {
+            List<Publicacion> publicacionesEntreFechas = new List<Publicacion>();
+            foreach (Publicacion p in _publicaciones)
+            {
+                if (p.FechaPublicacion > primerFecha && p.FechaPublicacion < segundaFecha)
+                {
+                   publicacionesEntreFechas.Add(p);
+                }
+
+            }
+            return publicacionesEntreFechas;
+
+        }
 
         #region PRECARGADATOS
 
-        
+
         private void PrecargaDatos()
         {
             PrecargaArticulos();
             PrecargaClientes();         
             PrecargaAdministradores();
-            //PrecargaSubastas();
-            //PrecargaVentas(); 
+            PrecargaSubastas();
+            PrecargaVentas(); 
 
         }
 
-        //private void PrecargaSubastas()
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         private void PrecargaAdministradores()
         {
@@ -110,13 +119,71 @@ namespace Clases
             _usuarios.Add(c5);
         }
 
-        //private void PrecargaVentas()
-        //{
-        //    Venta v1 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 09, 23));
-            
-        //    _publicaciones.Add(v1);
-            
-        //}
+        private void PrecargaVentas()
+        {
+            Venta v1 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 01, 23));
+            Venta v2 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 02, 23));
+            Venta v3 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 03, 23));
+            Venta v4 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 04, 23));
+            Venta v5 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 05, 23));
+            Venta v6 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 06, 23));
+            Venta v7 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 07, 23));
+            Venta v8 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 08, 23));
+            Venta v9 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 09, 23));
+            Venta v10 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 10, 23));
+
+
+            _publicaciones.Add(v1);
+            _publicaciones.Add(v2);
+            _publicaciones.Add(v3);
+            _publicaciones.Add(v4);
+            _publicaciones.Add(v5);
+            _publicaciones.Add(v6);
+            _publicaciones.Add(v7);
+            _publicaciones.Add(v8);
+            _publicaciones.Add(v9);
+            _publicaciones.Add(v10);
+
+        }
+
+        private void PrecargaSubastas()
+        {
+            Subasta s1 = new Subasta(crearOfertas(2), "Subasta1", Estado.Abierta, new DateTime(2024, 01, 25));
+            Subasta s2 = new Subasta(crearOfertas(4), "Subasta2", Estado.Abierta, new DateTime(2024, 02, 25));
+            Subasta s3 = new Subasta(null, "Subasta3", Estado.Abierta, new DateTime(2024, 03, 25));
+            Subasta s4 = new Subasta(null, "Subasta4", Estado.Abierta, new DateTime(2024, 04, 25));
+            Subasta s5 = new Subasta(null, "Subasta5", Estado.Abierta, new DateTime(2024, 05, 25));
+            Subasta s6 = new Subasta(null, "Subasta6", Estado.Abierta, new DateTime(2024, 06, 25));
+            Subasta s7 = new Subasta(null, "Subasta7", Estado.Abierta, new DateTime(2024, 07, 25));
+            Subasta s8 = new Subasta(null, "Subasta8", Estado.Abierta, new DateTime(2024, 08, 25));
+            Subasta s9 = new Subasta(null, "Subasta9", Estado.Abierta, new DateTime(2024, 09, 25));
+            Subasta s10 = new Subasta(null, "Subasta10", Estado.Abierta, new DateTime(2024, 10, 25));
+
+            _publicaciones.Add(s1);
+            _publicaciones.Add(s2);
+            _publicaciones.Add(s3);
+            _publicaciones.Add(s4);
+            _publicaciones.Add(s5);
+            _publicaciones.Add(s6);
+            _publicaciones.Add(s7);
+            _publicaciones.Add(s8);
+            _publicaciones.Add(s9);
+            _publicaciones.Add(s10);
+
+        }
+
+        private List<Oferta> crearOfertas(int unaCantidad)
+        {
+            List<Oferta> ofertasAux = new List<Oferta>();
+
+            for (int i = 0; i < unaCantidad; i++)
+            {
+                Oferta oferta = new Oferta(new Cliente(10000 + i, "Cliente", "ofertaPrecarga", "cliente.precarga@example.com", "pass123"), 200 + i, new DateTime(2024, 06, 25));
+            }
+
+            return ofertasAux;
+        }
+
         private void PrecargaArticulos()
         {
             Articulo a1 = new Articulo("Arroz", "Alimentos", 50.00);
