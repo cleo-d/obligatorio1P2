@@ -18,7 +18,7 @@ namespace Clases
 
         public DateTime FechaCompra { get; set; }
 
-        public Cliente ClienteCompra { get; set; } 
+        public Cliente ClienteCompra { get; set; }
         #endregion
         #region CONSTRUCTORES
         public Publicacion()
@@ -26,14 +26,12 @@ namespace Clases
             Id = UltimoId++;
         }
 
-        public Publicacion(string nombre, Estado estado, DateTime fechaPublicacion/*, DateTime fechaCompra, Cliente clienteCompra*/)
+        public Publicacion(string nombre, Estado estado, DateTime fechaPublicacion)
         {
             Id = UltimoId++;
             Nombre = nombre;
             Estado = estado;
             FechaPublicacion = fechaPublicacion;
-            //FechaCompra = fechaCompra;
-            //ClienteCompra = clienteCompra;
             Validar();
         }
         #endregion
@@ -49,6 +47,20 @@ namespace Clases
             {
                 throw new Exception("El nombre de la publicacion no puede ser vacia");
             }
+        }
+
+
+        //get articulos
+
+        public List<Articulo> getArticulos()
+        {
+            return _listaArticulos;
+        }
+
+        //motodo que agregue un articulo a la lista de articulos de la punblicacion
+        public void agregarArticulo(Articulo unArticulo)
+        {
+            _listaArticulos.Add(unArticulo);
         }
     }
 }

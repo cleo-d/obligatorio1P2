@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
-        #region PROPERTYS
     public class Articulo
     {
+        #region PROPERTYS
         public int Id { get; set; }
         public static int UltimoId { get; set; } = 1;
 

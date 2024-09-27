@@ -30,15 +30,11 @@ namespace UI
             {
                 case "1":
                     //Mostrar Lista de clientes
-                    List<Usuario> usuarios = s.GetUsuarios();
+                    List<Cliente> clientesAux = s.getClientes();
             
-                    foreach (Usuario u in usuarios)
+                    foreach (Cliente c in clientesAux)
                     {
-                        if(u is Cliente)
-                        {
-                            Cliente clienteAux = u as Cliente;
-                            Console.WriteLine(clienteAux.Nombre);
-                        }
+                            Console.WriteLine(c.Nombre);
                     }
                     break;
                 case "2":
@@ -64,9 +60,18 @@ namespace UI
                     string inputCatArt = Console.ReadLine();
                     Console.WriteLine("Ingrese un Precio para el Articulo");
                     double inputPrecioArt = int.Parse(Console.ReadLine());
-                    s.darAltaArticulo(inputNomArt,inputCatArt,inputPrecioArt);
 
-                    Console.WriteLine($"Articulo ingresado: {inputNomArt}, Categoria: {inputCatArt}, Precio: {inputPrecioArt}");
+                    try
+                    {
+                        s.altaArticulo(inputNomArt, inputCatArt, inputPrecioArt);
+                        Console.WriteLine($"Articulo ingresado correctamente! \n" +
+                                          $"Nombre: {inputNomArt}, Categoria: {inputCatArt}, Precio: {inputPrecioArt}");
+                    }
+                    catch (Exception e) 
+                    { 
+                      Console.WriteLine(e.Message); 
+                    }
+
 
 
                     break;

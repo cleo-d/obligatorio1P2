@@ -13,8 +13,8 @@ namespace Clases
         {
             
         }
-        public Administrador(string Nombre, string Apellido, string Email, string Contraseña) 
-            : base(Nombre, Apellido, Email,Contraseña) 
+        public Administrador(string Nombre, string Apellido, string Email, string Contrasenia) 
+            : base(Nombre, Apellido, Email,Contrasenia) 
         {
             
         }

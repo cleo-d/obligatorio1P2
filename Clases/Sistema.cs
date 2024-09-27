@@ -43,12 +43,27 @@ namespace Clases
             return _articulos;
         }
 
+        public List<Cliente> getClientes()
+        {
+            List<Cliente> clientesAux = new List<Cliente>();
+
+            foreach (Usuario u in _usuarios)
+            {
+                if (u is Cliente)
+                {
+                    clientesAux.Add((u as Cliente));
+                }
+            }
+
+            return clientesAux;
+        }
+
         public List<Articulo> GetArticulosPorCategoria(string categoria)
         {
             List<Articulo> articulosPorCategoria = new List<Articulo>();
             foreach (Articulo articulo in _articulos)
             {
-                if(articulo.Categoria == categoria)
+                if (articulo.Categoria == categoria)
                 {
                     articulosPorCategoria.Add(articulo);
                 }
@@ -57,10 +72,10 @@ namespace Clases
         }
 
         //Funcion para agregar un articulo
-        public void darAltaArticulo(string unNombre, string unaCategoria, double unPrecio)
+        public void altaArticulo(string unNombre, string unaCategoria, double unPrecio)
         {
 
-            Articulo a = new Articulo(unNombre,unaCategoria,unPrecio);
+            Articulo a = new Articulo(unNombre, unaCategoria, unPrecio);
             _articulos.Add(a);
 
         }
@@ -73,7 +88,7 @@ namespace Clases
             {
                 if (p.FechaPublicacion > primerFecha && p.FechaPublicacion < segundaFecha)
                 {
-                   publicacionesEntreFechas.Add(p);
+                    publicacionesEntreFechas.Add(p);
                 }
 
             }
@@ -87,9 +102,9 @@ namespace Clases
         private void PrecargaDatos()
         {
             PrecargaArticulos();
-            PrecargaClientes();         
+            PrecargaClientes();
             PrecargaAdministradores();
-            PrecargaSubastas();
+            //PrecargaSubastas();
             PrecargaVentas(); 
 
         }
@@ -122,6 +137,7 @@ namespace Clases
         private void PrecargaVentas()
         {
             Venta v1 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 01, 23));
+            v1.agregarArticulo(getArticuloPorNombre("Arroz"));
             Venta v2 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 02, 23));
             Venta v3 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 03, 23));
             Venta v4 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 04, 23));
@@ -146,31 +162,48 @@ namespace Clases
 
         }
 
-        private void PrecargaSubastas()
+
+
+        public List<Articulo> agregarListaArticulos(int unaCantidad, string unaCategoria)
         {
-            Subasta s1 = new Subasta(crearOfertas(2), "Subasta1", Estado.Abierta, new DateTime(2024, 01, 25));
-            Subasta s2 = new Subasta(crearOfertas(4), "Subasta2", Estado.Abierta, new DateTime(2024, 02, 25));
-            Subasta s3 = new Subasta(null, "Subasta3", Estado.Abierta, new DateTime(2024, 03, 25));
-            Subasta s4 = new Subasta(null, "Subasta4", Estado.Abierta, new DateTime(2024, 04, 25));
-            Subasta s5 = new Subasta(null, "Subasta5", Estado.Abierta, new DateTime(2024, 05, 25));
-            Subasta s6 = new Subasta(null, "Subasta6", Estado.Abierta, new DateTime(2024, 06, 25));
-            Subasta s7 = new Subasta(null, "Subasta7", Estado.Abierta, new DateTime(2024, 07, 25));
-            Subasta s8 = new Subasta(null, "Subasta8", Estado.Abierta, new DateTime(2024, 08, 25));
-            Subasta s9 = new Subasta(null, "Subasta9", Estado.Abierta, new DateTime(2024, 09, 25));
-            Subasta s10 = new Subasta(null, "Subasta10", Estado.Abierta, new DateTime(2024, 10, 25));
+            List<Articulo> articuloxAux = new List<Articulo>();
+            int i = 0;
 
-            _publicaciones.Add(s1);
-            _publicaciones.Add(s2);
-            _publicaciones.Add(s3);
-            _publicaciones.Add(s4);
-            _publicaciones.Add(s5);
-            _publicaciones.Add(s6);
-            _publicaciones.Add(s7);
-            _publicaciones.Add(s8);
-            _publicaciones.Add(s9);
-            _publicaciones.Add(s10);
 
+            foreach (Articulo a in _articulos)
+            {
+                articuloxAux.Add(a);
+            }
+
+            return articuloxAux;
         }
+
+        //private void PrecargaSubastas()
+        //{
+        //    Subasta s1 = new Subasta(crearOfertas(2), "Subasta1", Estado.Abierta, new DateTime(2024, 01, 25));
+        //s1.agregarArticulo();
+        //    Subasta s2 = new Subasta(crearOfertas(4), "Subasta2", Estado.Abierta, new DateTime(2024, 02, 25));
+        //    Subasta s3 = new Subasta(null, "Subasta3", Estado.Abierta, new DateTime(2024, 03, 25));
+        //    Subasta s4 = new Subasta(null, "Subasta4", Estado.Abierta, new DateTime(2024, 04, 25));
+        //    Subasta s5 = new Subasta(null, "Subasta5", Estado.Abierta, new DateTime(2024, 05, 25));
+        //    Subasta s6 = new Subasta(null, "Subasta6", Estado.Abierta, new DateTime(2024, 06, 25));
+        //    Subasta s7 = new Subasta(null, "Subasta7", Estado.Abierta, new DateTime(2024, 07, 25));
+        //    Subasta s8 = new Subasta(null, "Subasta8", Estado.Abierta, new DateTime(2024, 08, 25));
+        //    Subasta s9 = new Subasta(null, "Subasta9", Estado.Abierta, new DateTime(2024, 09, 25));
+        //    Subasta s10 = new Subasta(null, "Subasta10", Estado.Abierta, new DateTime(2024, 10, 25));
+
+        //    _publicaciones.Add(s1);
+        //    _publicaciones.Add(s2);
+        //    _publicaciones.Add(s3);
+        //    _publicaciones.Add(s4);
+        //    _publicaciones.Add(s5);
+        //    _publicaciones.Add(s6);
+        //    _publicaciones.Add(s7);
+        //    _publicaciones.Add(s8);
+        //    _publicaciones.Add(s9);
+        //    _publicaciones.Add(s10);
+
+        //}
 
         private List<Oferta> crearOfertas(int unaCantidad)
         {
@@ -206,9 +239,22 @@ namespace Clases
             _articulos.Add(a8);
             _articulos.Add(a9);
             _articulos.Add(a10);
-            
+
 
         }
         #endregion
+
+        public Articulo getArticuloPorNombre(string nombreArticulo)
+        {
+            foreach (Articulo a in _articulos)
+            {
+                if(a.Nombre == nombreArticulo) 
+                {
+                    return a;
+                }
+            }
+            return null;
+        }
+
     }
 }
