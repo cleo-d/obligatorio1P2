@@ -25,12 +25,12 @@ namespace Clases
             Id = UltimoId++;
         }
 
-        public Oferta(Cliente cliente, double monto, DateTime fechaOferta)
+        public Oferta(Cliente cliente, double monto)
         {
             Id = UltimoId++;
             Cliente = cliente;
             Monto = monto;
-            FechaOferta = fechaOferta;
+           // FechaOferta = DateTime.Now; ver metodo datetime xq no me registra el dia q se hace la oferta
             Validar();
         }
         #endregion
@@ -47,6 +47,7 @@ namespace Clases
                 throw new Exception("No tiene saldo para realizar esta oferta");
             }
         }
-    
+
+        
     }
 }

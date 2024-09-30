@@ -9,7 +9,7 @@ namespace UI
         static void Main(string[] args)
         {
             Sistema s = Sistema.Instancia();
-            //  3.Desplegar un menú en consola que permita:
+            // Desplegar un menú en consola que permita:
             //      • Listado de todos los clientes.
             //      • Dado un nombre de categoría listar todos los artículos de esa categoría.
             //      • Alta de artículo.
@@ -25,6 +25,7 @@ namespace UI
 
             //Leo opcion elegida por usuario
             string inputUsuario = Console.ReadLine();
+
 
             switch (inputUsuario)
             {
@@ -59,7 +60,7 @@ namespace UI
                     Console.WriteLine("Ingrese una Categoria para el Articulo");
                     string inputCatArt = Console.ReadLine();
                     Console.WriteLine("Ingrese un Precio para el Articulo");
-                    double inputPrecioArt = int.Parse(Console.ReadLine());
+                    double inputPrecioArt = int.Parse(Console.ReadLine());// validar en la excepcion cuando es vacio xq lo toma como string
 
                     try
                     {

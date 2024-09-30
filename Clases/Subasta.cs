@@ -18,12 +18,17 @@ namespace Clases
             
         }
 
-        public Subasta(List<Oferta> listaOfertas, string Nombre, Estado Estado, DateTime FechaPublicacion)
+        public Subasta(string Nombre, Estado Estado, DateTime FechaPublicacion)
             : base(Nombre, Estado, FechaPublicacion)
         {
-            _listaOfertas = listaOfertas;
+            
            
         }
         #endregion
+        public void agregarOferta(Oferta unaOferta)
+        {
+            _listaOfertas.Add(unaOferta);
+        }
+
     }
 }
