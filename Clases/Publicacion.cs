@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
+    //Esta clase podria ser abstracta y los metodos de Agregar Articulo (O VIRTUAL) estarian aca para poder agregar articulso desde una venta u subasta
     public class Publicacion
     {
         #region PROPERTYS

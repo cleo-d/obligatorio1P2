@@ -31,25 +31,39 @@ namespace UI
             {
                 case "1":
                     //Mostrar Lista de clientes
-                    List<Cliente> clientesAux = s.getClientes();
-            
-                    foreach (Cliente c in clientesAux)
+                    try
                     {
-                            Console.WriteLine(c.Nombre);
+                        List<Cliente> clientesAux = s.getClientes();
+
+                        foreach (Cliente c in clientesAux)
+                        {
+                            Console.WriteLine($"Nombre: {c.Nombre} ,Apellido: {c.Apellido} ,Email: {c.Email} ,Saldo: {c.Saldo}");
+                        }
                     }
-                    break;
+                    catch (Exception e) 
+                    {
+                        Console.WriteLine($"Error: {e.Message}");
+                    }
+                        break;
                 case "2":
                     Console.WriteLine("Indique una categoria");
                     string inputCategoria = Console.ReadLine();
 
                     //Listar productos segun categoria
-                    List<Articulo> articulosPorCategoria = s.GetArticulosPorCategoria(inputCategoria);
-                    if (articulosPorCategoria.Count > 0)
+                    try
                     {
-                        foreach (Articulo Articulo in articulosPorCategoria)
+                        List<Articulo> articulosPorCategoria = s.GetArticulosPorCategoria(inputCategoria);
+                        if (articulosPorCategoria.Count > 0)
                         {
-                            Console.WriteLine(Articulo.Nombre);
+                            foreach (Articulo Articulo in articulosPorCategoria)
+                            {
+                                Console.WriteLine($"Nombre: {Articulo.Nombre} ,Categoria: {Articulo.Categoria} ,Precio: {Articulo.Precio}");
+                            }
                         }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"Error: {e.Message}");
                     }
                     break;
 
@@ -64,6 +78,8 @@ namespace UI
 
                     try
                     {
+                        //Aca habria que validar los datos ingresados 
+                        //En la clase articulo se valdia las reglas de negocio para la cracion de Articulos
                         s.altaArticulo(inputNomArt, inputCatArt, inputPrecioArt);
                         Console.WriteLine($"Articulo ingresado correctamente! \n" +
                                           $"Nombre: {inputNomArt}, Categoria: {inputCatArt}, Precio: {inputPrecioArt}");

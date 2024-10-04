@@ -55,7 +55,10 @@ namespace Clases
                     clientesAux.Add((u as Cliente));
                 }
             }
-
+            if (clientesAux.Count == 0)
+            {
+                throw new Exception("La lista de clientes esta vacia");
+            }
             return clientesAux;
         }
 
@@ -69,6 +72,10 @@ namespace Clases
                 {
                     articulosPorCategoria.Add(articulo);
                 }
+            }
+            if (articulosPorCategoria.Count == 0)
+            {
+                throw new Exception("No se encontraron articulos dentro de esa categoria");
             }
             return articulosPorCategoria;
         }
@@ -107,7 +114,6 @@ namespace Clases
 
         #region PRECARGADATOS
 
-
         private void PrecargaDatos()
         {
             PrecargaArticulos();
@@ -115,9 +121,7 @@ namespace Clases
             PrecargaAdministradores();
             PrecargaSubastas();
             PrecargaVentas(); 
-
         }
-
 
         private void PrecargaAdministradores()
         {

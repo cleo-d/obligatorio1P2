@@ -42,7 +42,7 @@ namespace Clases
                 throw new Exception("No tiene saldo para realizar la compra de la publicacion");
             }
         }
-        public void AgregarArticulo(Articulo articulo)
+        public void agregarArticulo(Articulo articulo)
         {
             try
             {
