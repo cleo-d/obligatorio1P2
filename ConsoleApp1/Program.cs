@@ -88,17 +88,20 @@ namespace UI
 
                     case "3":
                         //Crear Articulo nuevo
-                        Console.WriteLine("Ingrese un nombre para el Articulo");
-                        string inputNomArt = Console.ReadLine();
-                        Console.WriteLine("Ingrese una Categoria para el Articulo");
-                        string inputCatArt = Console.ReadLine();
-                        Console.WriteLine("Ingrese un Precio para el Articulo");
+                       
 
                         try
                         {
-                            double inputPrecioArt = double.Parse(Console.ReadLine());
+                            Console.WriteLine("Ingrese un nombre para el Articulo");
+                            string inputNomArt = Console.ReadLine();
                             validarVacio(inputNomArt);
+                            Console.WriteLine("Ingrese una Categoria para el Articulo");
+                            string inputCatArt = Console.ReadLine();
                             validarVacio(inputCatArt);
+                            Console.WriteLine("Ingrese un Precio para el Articulo");
+                            double inputPrecioArt = double.Parse(Console.ReadLine());
+                            
+                            
                             //En la clase articulo se valida las reglas de negocio para la cracion de Articulos
                             s.altaArticulo(inputNomArt, inputCatArt, inputPrecioArt);
 
@@ -183,9 +186,9 @@ namespace UI
                         mostrarMenu();
                         break;
 
-                case "0":
-                    Console.WriteLine("Saliendo del sistema");
-                    break;
+                    case "0":
+                        Console.WriteLine("Saliendo del sistema");
+                        break;
 
                     default:
                         Console.WriteLine("Por favor ingrese una opcion del menu");

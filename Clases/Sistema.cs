@@ -48,6 +48,9 @@ namespace Clases
         {
             List<Cliente> clientesAux = new List<Cliente>();
 
+
+
+
             foreach (Usuario u in _usuarios)
             {
                 if (u is Cliente)
@@ -128,6 +131,7 @@ namespace Clases
             Administrador admin1 = new Administrador("Pedro", "Rodríguez", "pedro.rodriguez@example.com", "adminpass1");
             Administrador admin2 = new Administrador("Sofía", "Hernández", "sofia.hernandez@example.com", "adminpass2");
             Administrador admin3 = new Administrador("David", "García", "david.garcia@example.com", "adminpass3");
+            //Agrego los administradores a la lista de usuarios
             _usuarios.Add(admin1);
             _usuarios.Add(admin2);
             _usuarios.Add(admin3);
@@ -140,6 +144,7 @@ namespace Clases
             Cliente c3 = new Cliente(1200.75, "Carlos", "López", "carlos.lopez@example.com", "carlospass");
             Cliente c4 = new Cliente(800.20, "Ana", "Martínez", "ana.martinez@example.com", "anapass");
             Cliente c5 = new Cliente(3000.00, "Luis", "Fernández", "luis.fernandez@example.com", "luifernpass");
+            //Agrego los clientes a la lista de usuarios
             _usuarios.Add(c1);
             _usuarios.Add(c2);
             _usuarios.Add(c3);
@@ -149,7 +154,7 @@ namespace Clases
 
         private void PrecargaVentas()
         {
-            Venta v1 = new Venta(true, 100, "Productos deLimpieza", Estado.Abierta, new DateTime(2023, 01, 23));
+            Venta v1 = new Venta(true, 100, "Productos de Escritorio", Estado.Abierta, new DateTime(2023, 01, 23));
             Venta v2 = new Venta(true, 100, "Productos de Electronica", Estado.Abierta, new DateTime(2023, 02, 23));
             Venta v3 = new Venta(true, 100, "Instrumentos", Estado.Abierta, new DateTime(2023, 03, 23));
             Venta v4 = new Venta(true, 100, "Productos para Hogar", Estado.Abierta, new DateTime(2023, 04, 23));
@@ -165,6 +170,40 @@ namespace Clases
             v1.agregarArticulo(getArticuloPorNombre("Silla"));
             v1.agregarArticulo(getArticuloPorNombre("Mesa"));
             v1.agregarArticulo(getArticuloPorNombre("Monitor"));
+
+            v2.agregarArticulo(getArticuloPorNombre("Laptop"));
+            v2.agregarArticulo(getArticuloPorNombre("Mouse"));
+            v2.agregarArticulo(getArticuloPorNombre("Teclado"));
+            v2.agregarArticulo(getArticuloPorNombre("Monitor"));
+
+            v3.agregarArticulo(getArticuloPorNombre("Laptop"));
+            v3.agregarArticulo(getArticuloPorNombre("Piano"));
+            v3.agregarArticulo(getArticuloPorNombre("Guitarra"));
+
+            v4.agregarArticulo(getArticuloPorNombre("Silla"));
+            v4.agregarArticulo(getArticuloPorNombre("Lavadora"));
+            v4.agregarArticulo(getArticuloPorNombre("Mesa"));
+            v4.agregarArticulo(getArticuloPorNombre("Secadora"));
+
+            v5.agregarArticulo(getArticuloPorNombre("Licuadora"));
+            v5.agregarArticulo(getArticuloPorNombre("Cafetera"));
+            v5.agregarArticulo(getArticuloPorNombre("Tostadora"));
+
+            v6.agregarArticulo(getArticuloPorNombre("Libro"));
+            v6.agregarArticulo(getArticuloPorNombre("Estantería"));
+
+
+            v8.agregarArticulo(getArticuloPorNombre("Audífonos"));
+            v8.agregarArticulo(getArticuloPorNombre("Mochila"));
+
+
+            v9.agregarArticulo(getArticuloPorNombre("Zapatos"));
+            v9.agregarArticulo(getArticuloPorNombre("Camiseta"));
+
+
+            v10.agregarArticulo(getArticuloPorNombre("Bicicleta"));
+            v10.agregarArticulo(getArticuloPorNombre("Raqueta de tenis"));
+
 
             //Agrego las ventas a la lista de publicaciones
             _publicaciones.Add(v1);
@@ -184,26 +223,6 @@ namespace Clases
         {
             Subasta s1 = new Subasta("Limpieza", Estado.Abierta, new DateTime(2024, 01, 25));
             Subasta s2 = new Subasta("Instrumentos", Estado.Abierta, new DateTime(2024, 02, 25));
-
-            //Agrego articulos a la lista de la subasta
-            s1.agregarArticulo(getArticuloPorNombre("Lavadora"));
-            s1.agregarArticulo(getArticuloPorNombre("Secadora"));
-            s1.agregarArticulo(getArticuloPorNombre("Tostadora"));
-            s2.agregarArticulo(getArticuloPorNombre("Guitarra"));
-            s2.agregarArticulo(getArticuloPorNombre("Estuche de guitarra"));
-            s2.agregarArticulo(getArticuloPorNombre("Parlante"));
-
-
-            //Agrego ofertas a la subasta
-            s1.agregarOferta(new Oferta((GetClientePorNombre("Juan")), 125));
-            s1.agregarOferta(new Oferta((GetClientePorNombre("Carlos")), 350));
-            s2.agregarOferta(new Oferta((GetClientePorNombre("Ana")), 350));
-            s2.agregarOferta(new Oferta((GetClientePorNombre("Luis")), 350));
-
-
-
-
-
             Subasta s3 = new Subasta("Subasta3", Estado.Abierta, new DateTime(2024, 03, 25));
             Subasta s4 = new Subasta("Subasta4", Estado.Abierta, new DateTime(2024, 04, 25));
             Subasta s5 = new Subasta("Subasta5", Estado.Abierta, new DateTime(2024, 05, 25));
@@ -213,7 +232,61 @@ namespace Clases
             Subasta s9 = new Subasta("Subasta9", Estado.Abierta, new DateTime(2024, 09, 25));
             Subasta s10 = new Subasta("Subasta10", Estado.Abierta, new DateTime(2024, 10, 25));
 
-            //_publicaciones.Add(s1);
+            //Agrego articulos a la lista de la subasta
+            s1.agregarArticulo(getArticuloPorNombre("Lavadora"));
+            s1.agregarArticulo(getArticuloPorNombre("Secadora"));
+            s1.agregarArticulo(getArticuloPorNombre("Tostadora"));
+
+            s2.agregarArticulo(getArticuloPorNombre("Guitarra"));
+            s2.agregarArticulo(getArticuloPorNombre("Estuche de guitarra"));
+            s2.agregarArticulo(getArticuloPorNombre("Parlante"));
+
+
+            s3.agregarArticulo(getArticuloPorNombre("Laptop"));
+            s3.agregarArticulo(getArticuloPorNombre("Piano"));
+            s3.agregarArticulo(getArticuloPorNombre("Guitarra"));
+
+            s4.agregarArticulo(getArticuloPorNombre("Silla"));
+            s4.agregarArticulo(getArticuloPorNombre("Lavadora"));
+            s4.agregarArticulo(getArticuloPorNombre("Mesa"));
+            s4.agregarArticulo(getArticuloPorNombre("Secadora"));
+
+            s5.agregarArticulo(getArticuloPorNombre("Licuadora"));
+            s5.agregarArticulo(getArticuloPorNombre("Cafetera"));
+            s5.agregarArticulo(getArticuloPorNombre("Tostadora"));
+
+            s6.agregarArticulo(getArticuloPorNombre("Libro"));
+            s6.agregarArticulo(getArticuloPorNombre("Estantería"));
+
+
+            s8.agregarArticulo(getArticuloPorNombre("Audífonos"));
+            s8.agregarArticulo(getArticuloPorNombre("Mochila"));
+
+
+            s9.agregarArticulo(getArticuloPorNombre("Zapatos"));
+            s9.agregarArticulo(getArticuloPorNombre("Camiseta"));
+
+
+            s10.agregarArticulo(getArticuloPorNombre("Bicicleta"));
+            s10.agregarArticulo(getArticuloPorNombre("Raqueta de tenis"));
+
+
+            //Agrego ofertas a la subasta
+            s1.agregarOferta(new Oferta((GetClientePorNombre("Juan")), 125));
+            s1.agregarOferta(new Oferta((GetClientePorNombre("Carlos")), 350));
+
+            s2.agregarOferta(new Oferta((GetClientePorNombre("Ana")), 350));
+            s2.agregarOferta(new Oferta((GetClientePorNombre("Luis")), 350));
+
+
+
+
+
+        
+
+            
+
+            _publicaciones.Add(s1);
             _publicaciones.Add(s2);
             _publicaciones.Add(s3);
             _publicaciones.Add(s4);
