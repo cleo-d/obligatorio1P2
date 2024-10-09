@@ -122,8 +122,16 @@ namespace UI
 
             Console.ReadKey();
 
+            }
+            Console.ReadKey();
+            //End
 
+        }
 
+        private static void validarPrecio(double inputPrecioArt)
+        {
+            throw new NotImplementedException();
+        }
 
             //End
         }

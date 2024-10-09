@@ -161,10 +161,10 @@ namespace Clases
             Venta v10 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 10, 23));
 
             //Agrego articulos a las ventas
-            v1.agregarArticulo(getArticuloPorNombre("Arroz"));
-            v1.agregarArticulo(getArticuloPorNombre("Azúcar"));
-            v1.agregarArticulo(getArticuloPorNombre("Harina"));
-            v1.agregarArticulo(getArticuloPorNombre("Sal"));
+            v1.agregarArticulo(getArticuloPorNombre("Laptop"));
+            v1.agregarArticulo(getArticuloPorNombre("Silla"));
+            v1.agregarArticulo(getArticuloPorNombre("Mesa"));
+            v1.agregarArticulo(getArticuloPorNombre("Monitor"));
 
             //Agrego las ventas a la lista de publicaciones
             _publicaciones.Add(v1);
@@ -184,9 +184,9 @@ namespace Clases
         {
             Subasta s1 = new Subasta("Limpieza", Estado.Abierta, new DateTime(2024, 01, 25));
             //Agrego articulos a la lista de la subasta
-            s1.agregarArticulo(getArticuloPorNombre("Jabón"));
-            s1.agregarArticulo(getArticuloPorNombre("Detergente"));
-            s1.agregarArticulo(getArticuloPorNombre("Desinfectante"));
+            s1.agregarArticulo(getArticuloPorNombre("Lavadora"));
+            s1.agregarArticulo(getArticuloPorNombre("Secadora"));
+            s1.agregarArticulo(getArticuloPorNombre("Tostadora"));
 
             //Agrego ofertas a la subasta
             s1.agregarOferta(new Oferta((GetClientePorNombre("Juan")), 125));
@@ -202,7 +202,7 @@ namespace Clases
             Subasta s9 = new Subasta("Subasta9", Estado.Abierta, new DateTime(2024, 09, 25));
             Subasta s10 = new Subasta("Subasta10", Estado.Abierta, new DateTime(2024, 10, 25));
 
-            _publicaciones.Add(s1);
+            //_publicaciones.Add(s1);
             _publicaciones.Add(s2);
             _publicaciones.Add(s3);
             _publicaciones.Add(s4);
@@ -219,26 +219,60 @@ namespace Clases
 
         private void PrecargaArticulos()
         {
-            Articulo a1 = new Articulo("Arroz", "Alimentos", 50.00);
-            Articulo a2 = new Articulo("Harina", "Alimentos", 40.00);
-            Articulo a3 = new Articulo("Jabón", "Limpieza", 30.00);
-            Articulo a4 = new Articulo("Detergente", "Limpieza", 80.00);
-            Articulo a5 = new Articulo("Aceite", "Alimentos", 120.00);
-            Articulo a6 = new Articulo("Fósforos", "Hogar", 10.00);
-            Articulo a7 = new Articulo("Azúcar", "Alimentos", 45.00);
-            Articulo a8 = new Articulo("Sal", "Alimentos", 20.00);
-            Articulo a9 = new Articulo("Desinfectante", "Limpieza", 90.00);
-            Articulo a10 = new Articulo("Papel Higiénico", "Higiene", 60.00);
-            _articulos.Add(a1);
-            _articulos.Add(a2);
-            _articulos.Add(a3);
-            _articulos.Add(a4);
-            _articulos.Add(a5);
-            _articulos.Add(a6);
-            _articulos.Add(a7);
-            _articulos.Add(a8);
-            _articulos.Add(a9);
-            _articulos.Add(a10);
+            List<Articulo> articulos = new List<Articulo>
+        {
+            new Articulo("Laptop", "Electrónica", 999.99),
+            new Articulo("Teléfono", "Electrónica", 599.99),
+            new Articulo("Silla", "Muebles", 120.50),
+            new Articulo("Mesa", "Muebles", 200.00),
+            new Articulo("Cámara", "Electrónica", 350.75),
+            new Articulo("Libro", "Papelería", 15.99),
+            new Articulo("Monitor", "Electrónica", 189.99),
+            new Articulo("Teclado", "Accesorios", 49.99),
+            new Articulo("Mouse", "Accesorios", 29.99),
+            new Articulo("Impresora", "Electrónica", 250.00),
+            new Articulo("Lámpara", "Hogar", 45.50),
+            new Articulo("Zapatos", "Ropa", 75.99),
+            new Articulo("Camiseta", "Ropa", 25.00),
+            new Articulo("Refrigerador", "Electrodomésticos", 899.99),
+            new Articulo("Lavadora", "Electrodomésticos", 750.00),
+            new Articulo("Secadora", "Electrodomésticos", 600.00),
+            new Articulo("Tostadora", "Electrodomésticos", 35.99),
+            new Articulo("Audífonos", "Accesorios", 89.99),
+            new Articulo("Mochila", "Accesorios", 55.00),
+            new Articulo("Bicicleta", "Deportes", 450.00),
+            new Articulo("Raqueta de tenis", "Deportes", 120.99),
+            new Articulo("Guantes", "Accesorios", 29.99),
+            new Articulo("Gorra", "Ropa", 19.99),
+            new Articulo("Cámara de seguridad", "Electrónica", 120.00),
+            new Articulo("Guitarra", "Instrumentos", 300.50),
+            new Articulo("Piano", "Instrumentos", 1200.00),
+            new Articulo("Batería", "Instrumentos", 700.00),
+            new Articulo("Estuche de guitarra", "Accesorios", 75.00),
+            new Articulo("Parlante", "Electrónica", 150.00),
+            new Articulo("Televisor", "Electrónica", 1100.00),
+            new Articulo("DVD Player", "Electrónica", 89.99),
+            new Articulo("Auriculares inalámbricos", "Electrónica", 250.00),
+            new Articulo("Tablet", "Electrónica", 499.99),
+            new Articulo("Cargador portátil", "Accesorios", 39.99),
+            new Articulo("Smartwatch", "Electrónica", 299.99),
+            new Articulo("Microondas", "Electrodomésticos", 199.99),
+            new Articulo("Ventilador", "Hogar", 75.00),
+            new Articulo("Reloj de pared", "Hogar", 45.00),
+            new Articulo("Cafetera", "Electrodomésticos", 99.99),
+            new Articulo("Licuadora", "Electrodomésticos", 85.99),
+            new Articulo("Olla de presión", "Cocina", 69.99),
+            new Articulo("Set de cuchillos", "Cocina", 49.99),
+            new Articulo("Toalla de baño", "Hogar", 25.99),
+            new Articulo("Colchón", "Hogar", 450.00),
+            new Articulo("Almohada", "Hogar", 30.00),
+            new Articulo("Espejo", "Hogar", 75.50),
+            new Articulo("Planta decorativa", "Hogar", 45.00),
+            new Articulo("Estantería", "Muebles", 250.00)
+            };
+
+            _articulos.AddRange(articulos);
+
 
 
         }
