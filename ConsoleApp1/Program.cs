@@ -46,11 +46,15 @@ namespace UI
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine($"Error: {e.Message}");
+                            Console.WriteLine($"-------------------------");
+                            Console.WriteLine($"----------ERROR----------");
+                            Console.WriteLine(e.Message);
+                            Console.WriteLine($"-------------------------");
                         }
 
                         mostrarMenu();
                         break;
+
                     case "2":
                         Console.WriteLine("Indique una categoria");
                         string inputCategoria = Console.ReadLine();
@@ -74,7 +78,10 @@ namespace UI
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine($"Error: {e.Message}");
+                            Console.WriteLine($"-------------------------");
+                            Console.WriteLine($"----------ERROR----------");
+                            Console.WriteLine(e.Message);
+                            Console.WriteLine($"-------------------------");
                         }
                         mostrarMenu();
                         break;
@@ -86,44 +93,92 @@ namespace UI
                         Console.WriteLine("Ingrese una Categoria para el Articulo");
                         string inputCatArt = Console.ReadLine();
                         Console.WriteLine("Ingrese un Precio para el Articulo");
-                        double inputPrecioArt = double.Parse(Console.ReadLine());
 
                         try
                         {
+                            double inputPrecioArt = double.Parse(Console.ReadLine());
                             validarVacio(inputNomArt);
                             validarVacio(inputCatArt);
                             //En la clase articulo se valida las reglas de negocio para la cracion de Articulos
                             s.altaArticulo(inputNomArt, inputCatArt, inputPrecioArt);
-                            Console.WriteLine($"Articulo ingresado correctamente! \n" +
-                                              $"Nombre: {inputNomArt}, Categoria: {inputCatArt}, Precio: {inputPrecioArt}");
+
+                            Console.WriteLine($"-------------------------");
+                            Console.WriteLine($"Articulo ingresado correctamente!");
+                            Console.WriteLine($"-------------------------");
+                            Console.WriteLine($"|Nombre: {inputNomArt}");
+                            Console.WriteLine($"|Categoria: {inputCatArt}");
+                            Console.WriteLine($"|Precio: {inputPrecioArt}");
+                            Console.WriteLine($"-------------------------");
                         }
                         catch (Exception e)
                         {
+                            Console.WriteLine($"-------------------------");
+                            Console.WriteLine($"----------ERROR----------");
                             Console.WriteLine(e.Message);
+                            Console.WriteLine($"-------------------------");
                         }
                         mostrarMenu();
                         break;
 
                     case "4":
-                        //Listar publicaciones segun rango de fechas
-                        Console.WriteLine("Ingrese una fecha de inicio con formato AAAA-MM-DD");
-                        DateTime inputFecha1 = DateTime.Parse(Console.ReadLine());
-                        Console.WriteLine("Ingrese una fecha de finalizacion con formato AAAA-MM-DD");
-                        DateTime inputFecha2 = DateTime.Parse(Console.ReadLine()); ;
-
-                    Console.WriteLine(inputFecha1.ToString(),  inputFecha2.ToString());
 
                         try
                         {
-                            List<Publicacion> publicacionesAux = s.PublicacionesEntreFechas(inputFecha1, inputFecha2);
-                            foreach (Publicacion p in publicacionesAux)
+                            // Listar publicaciones según rango de fechas
+                            Console.WriteLine("Ingrese una fecha de inicio con formato AAAA-MM-DD:");
+                            DateTime inputFecha1;
+                            if (!DateTime.TryParse(Console.ReadLine(), out inputFecha1))
                             {
-                                Console.WriteLine($"Id: {p.Id} Nombre: {p.Nombre} Estado: {p.Estado}");
+                                throw new FormatException("La fecha de inicio no es válida.");
                             }
+
+                            Console.WriteLine("Ingrese una fecha de finalización con formato AAAA-MM-DD:");
+                            DateTime inputFecha2;
+                            if (!DateTime.TryParse(Console.ReadLine(), out inputFecha2))
+                            {
+                                throw new FormatException("La fecha de finalización no es válida.");
+                            }
+
+                            if (inputFecha1 > inputFecha2)
+                            {
+                                throw new ArgumentException("La fecha de inicio debe ser anterior a la fecha de finalización.");
+                            }
+
+                            List<Publicacion> publicacionesAux = s.PublicacionesEntreFechas(inputFecha1, inputFecha2);
+                            if (publicacionesAux.Count != 0)
+                            {
+                                foreach (Publicacion p in publicacionesAux)
+                                {
+                                    Console.WriteLine($"Id: {p.Id} Nombre: {p.Nombre} Estado: {p.Estado}");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine($"-------------------------");
+                                Console.WriteLine("No se encontraron publicaciones en el rango de fechas ingresadas");
+                                Console.WriteLine($"-------------------------");
+                            }
+                        }
+                        catch (FormatException fe)
+                        {
+                            Console.WriteLine($"-------------------------");
+                            Console.WriteLine($"----------ERROR----------");
+                            Console.WriteLine(fe.Message);
+                            Console.WriteLine($"-------------------------");
+                        }
+                        catch (ArgumentException ae)
+                        {
+                            Console.WriteLine($"-------------------------");
+                            Console.WriteLine($"----------ERROR----------");
+                            Console.WriteLine(ae.Message);
+                            Console.WriteLine($"-------------------------");
                         }
                         catch (Exception e)
                         {
-                           Console.WriteLine(e.Message);
+                            Console.WriteLine($"-------------------------");
+                            Console.WriteLine($"----------ERROR----------");
+                            Console.WriteLine(e.Message);
+                            Console.WriteLine($"-------------------------");
                         }
                         mostrarMenu();
                         break;
@@ -144,11 +199,7 @@ namespace UI
 
         }
 
-        private static void validarPrecio(double inputPrecioArt)
-        {
-            throw new NotImplementedException();
-        }
-
+        //Validacion basica para verificar que un input no sea Null o Empty
         private static void validarVacio(string inputString)
         {
             if (string.IsNullOrEmpty(inputString))
@@ -162,7 +213,7 @@ namespace UI
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("*********************************************");
-                Console.WriteLine("-------Seleccione otra opcion del menu-------");
+            Console.WriteLine("-------Seleccione una opcion del menu -------");
                 Console.WriteLine("1-Mostrar listado de clientes");
                 Console.WriteLine("2-Listar productos segun categoria");
                 Console.WriteLine("3-Dar de alta a un articulo");

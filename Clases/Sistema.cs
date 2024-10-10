@@ -20,7 +20,7 @@ namespace Clases
         }
 
 
-
+        //Singleton
         public static Sistema Instancia()
         {
             if (_instancia == null)
@@ -149,16 +149,16 @@ namespace Clases
 
         private void PrecargaVentas()
         {
-            Venta v1 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 01, 23));
-            Venta v2 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 02, 23));
-            Venta v3 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 03, 23));
-            Venta v4 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 04, 23));
-            Venta v5 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 05, 23));
-            Venta v6 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 06, 23));
-            Venta v7 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 07, 23));
-            Venta v8 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 08, 23));
-            Venta v9 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 09, 23));
-            Venta v10 = new Venta(true, 100, "Limpieza", Estado.Abierta, new DateTime(2023, 10, 23));
+            Venta v1 = new Venta(true, 100, "Productos deLimpieza", Estado.Abierta, new DateTime(2023, 01, 23));
+            Venta v2 = new Venta(true, 100, "Productos de Electronica", Estado.Abierta, new DateTime(2023, 02, 23));
+            Venta v3 = new Venta(true, 100, "Instrumentos", Estado.Abierta, new DateTime(2023, 03, 23));
+            Venta v4 = new Venta(true, 100, "Productos para Hogar", Estado.Abierta, new DateTime(2023, 04, 23));
+            Venta v5 = new Venta(true, 100, "Productos de Cocina", Estado.Abierta, new DateTime(2023, 05, 23));
+            Venta v6 = new Venta(true, 100, "Productos de Papeleria", Estado.Abierta, new DateTime(2023, 06, 23));
+            Venta v7 = new Venta(true, 100, "Muebles", Estado.Abierta, new DateTime(2023, 07, 23));
+            Venta v8 = new Venta(true, 100, "Accesorios", Estado.Abierta, new DateTime(2023, 08, 23));
+            Venta v9 = new Venta(true, 100, "Ropa", Estado.Abierta, new DateTime(2023, 09, 23));
+            Venta v10 = new Venta(true, 100, "Deportes", Estado.Abierta, new DateTime(2023, 10, 23));
 
             //Agrego articulos a las ventas
             v1.agregarArticulo(getArticuloPorNombre("Laptop"));
@@ -183,16 +183,27 @@ namespace Clases
         private void PrecargaSubastas()
         {
             Subasta s1 = new Subasta("Limpieza", Estado.Abierta, new DateTime(2024, 01, 25));
+            Subasta s2 = new Subasta("Instrumentos", Estado.Abierta, new DateTime(2024, 02, 25));
+
             //Agrego articulos a la lista de la subasta
             s1.agregarArticulo(getArticuloPorNombre("Lavadora"));
             s1.agregarArticulo(getArticuloPorNombre("Secadora"));
             s1.agregarArticulo(getArticuloPorNombre("Tostadora"));
+            s2.agregarArticulo(getArticuloPorNombre("Guitarra"));
+            s2.agregarArticulo(getArticuloPorNombre("Estuche de guitarra"));
+            s2.agregarArticulo(getArticuloPorNombre("Parlante"));
+
 
             //Agrego ofertas a la subasta
             s1.agregarOferta(new Oferta((GetClientePorNombre("Juan")), 125));
             s1.agregarOferta(new Oferta((GetClientePorNombre("Carlos")), 350));
+            s2.agregarOferta(new Oferta((GetClientePorNombre("Ana")), 350));
+            s2.agregarOferta(new Oferta((GetClientePorNombre("Luis")), 350));
 
-            Subasta s2 = new Subasta("Subasta2", Estado.Abierta, new DateTime(2024, 02, 25));
+
+
+
+
             Subasta s3 = new Subasta("Subasta3", Estado.Abierta, new DateTime(2024, 03, 25));
             Subasta s4 = new Subasta("Subasta4", Estado.Abierta, new DateTime(2024, 04, 25));
             Subasta s5 = new Subasta("Subasta5", Estado.Abierta, new DateTime(2024, 05, 25));
