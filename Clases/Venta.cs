@@ -24,7 +24,7 @@ namespace Clases
         {
             OfertaRelampago = ofertaRelampago;
             PrecioVenta = precioVenta;
-            validar();
+            Validar();
         }
         #endregion
 
