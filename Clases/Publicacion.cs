@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Clases
 {
     //Esta clase podria ser abstracta y los metodos de Agregar Articulo (O VIRTUAL) estarian aca para poder agregar articulso desde una venta u subasta
-    public abstract class Publicacion
+    public abstract class Publicacion : IValidable
     {
         #region PROPERTYS
         public int Id { get; set; }
@@ -37,7 +37,7 @@ namespace Clases
         }
         #endregion
 
-        private void Validar()
+        public void Validar()
         {
             ValidarNombre();
         }

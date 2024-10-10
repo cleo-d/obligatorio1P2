@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
-    public class Articulo
+    public class Articulo : IValidable 
     {
         #region PROPERTYS
         public int Id { get; set; }

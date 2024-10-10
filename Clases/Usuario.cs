@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
-    public abstract class Usuario
+    public abstract class Usuario : IValidable 
     {
         #region PROPERTYS
         public int Id { get; set; }
@@ -35,7 +35,7 @@ namespace Clases
         }
         #endregion
 
-        private void Validar()
+        public void Validar()
         {
             ValidarNombre();
             ValidarApellido();
