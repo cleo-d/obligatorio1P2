@@ -44,7 +44,7 @@ namespace Clases
         }
 
         //Metodo para filtrar usuarios y deveolver clientes
-        public List<Cliente> getClientes()
+        public List<Cliente> GetClientes()
         {
             List<Cliente> clientesAux = new List<Cliente>();
 
@@ -84,7 +84,7 @@ namespace Clases
         }
 
         //Funcion para agregar un articulo
-        public void altaArticulo(string unNombre, string unaCategoria, double unPrecio)
+        public void AltaArticulo(string unNombre, string unaCategoria, double unPrecio)
         {
             try
             {
@@ -166,43 +166,43 @@ namespace Clases
             Venta v10 = new Venta(true, 100, "Deportes", Estado.Abierta, new DateTime(2023, 10, 23));
 
             //Agrego articulos a las ventas
-            v1.agregarArticulo(getArticuloPorNombre("Laptop"));
-            v1.agregarArticulo(getArticuloPorNombre("Silla"));
-            v1.agregarArticulo(getArticuloPorNombre("Mesa"));
-            v1.agregarArticulo(getArticuloPorNombre("Monitor"));
+            v1.AgregarArticulo(GetArticuloPorNombre("Laptop"));
+            v1.AgregarArticulo(GetArticuloPorNombre("Silla"));
+            v1.AgregarArticulo(GetArticuloPorNombre("Mesa"));
+            v1.AgregarArticulo(GetArticuloPorNombre("Monitor"));
 
-            v2.agregarArticulo(getArticuloPorNombre("Laptop"));
-            v2.agregarArticulo(getArticuloPorNombre("Mouse"));
-            v2.agregarArticulo(getArticuloPorNombre("Teclado"));
-            v2.agregarArticulo(getArticuloPorNombre("Monitor"));
+            v2.AgregarArticulo(GetArticuloPorNombre("Laptop"));
+            v2.AgregarArticulo(GetArticuloPorNombre("Mouse"));
+            v2.AgregarArticulo(GetArticuloPorNombre("Teclado"));
+            v2.AgregarArticulo(GetArticuloPorNombre("Monitor"));
 
-            v3.agregarArticulo(getArticuloPorNombre("Laptop"));
-            v3.agregarArticulo(getArticuloPorNombre("Piano"));
-            v3.agregarArticulo(getArticuloPorNombre("Guitarra"));
+            v3.AgregarArticulo(GetArticuloPorNombre("Laptop"));
+            v3.AgregarArticulo(GetArticuloPorNombre("Piano"));
+            v3.AgregarArticulo(GetArticuloPorNombre("Guitarra"));
 
-            v4.agregarArticulo(getArticuloPorNombre("Silla"));
-            v4.agregarArticulo(getArticuloPorNombre("Lavadora"));
-            v4.agregarArticulo(getArticuloPorNombre("Mesa"));
-            v4.agregarArticulo(getArticuloPorNombre("Secadora"));
+            v4.AgregarArticulo(GetArticuloPorNombre("Silla"));
+            v4.AgregarArticulo(GetArticuloPorNombre("Lavadora"));
+            v4.AgregarArticulo(GetArticuloPorNombre("Mesa"));
+            v4.AgregarArticulo(GetArticuloPorNombre("Secadora"));
 
-            v5.agregarArticulo(getArticuloPorNombre("Licuadora"));
-            v5.agregarArticulo(getArticuloPorNombre("Cafetera"));
-            v5.agregarArticulo(getArticuloPorNombre("Tostadora"));
+            v5.AgregarArticulo(GetArticuloPorNombre("Licuadora"));
+            v5.AgregarArticulo(GetArticuloPorNombre("Cafetera"));
+            v5.AgregarArticulo(GetArticuloPorNombre("Tostadora"));
 
-            v6.agregarArticulo(getArticuloPorNombre("Libro"));
-            v6.agregarArticulo(getArticuloPorNombre("Estantería"));
-
-
-            v8.agregarArticulo(getArticuloPorNombre("Audífonos"));
-            v8.agregarArticulo(getArticuloPorNombre("Mochila"));
+            v6.AgregarArticulo(GetArticuloPorNombre("Libro"));
+            v6.AgregarArticulo(GetArticuloPorNombre("Estantería"));
 
 
-            v9.agregarArticulo(getArticuloPorNombre("Zapatos"));
-            v9.agregarArticulo(getArticuloPorNombre("Camiseta"));
+            v8.AgregarArticulo(GetArticuloPorNombre("Audífonos"));
+            v8.AgregarArticulo(GetArticuloPorNombre("Mochila"));
 
 
-            v10.agregarArticulo(getArticuloPorNombre("Bicicleta"));
-            v10.agregarArticulo(getArticuloPorNombre("Raqueta de tenis"));
+            v9.AgregarArticulo(GetArticuloPorNombre("Zapatos"));
+            v9.AgregarArticulo(GetArticuloPorNombre("Camiseta"));
+
+
+            v10.AgregarArticulo(GetArticuloPorNombre("Bicicleta"));
+            v10.AgregarArticulo(GetArticuloPorNombre("Raqueta de tenis"));
 
 
             //Agrego las ventas a la lista de publicaciones
@@ -233,50 +233,50 @@ namespace Clases
             Subasta s10 = new Subasta("Subasta10", Estado.Abierta, new DateTime(2024, 10, 25));
 
             //Agrego articulos a la lista de la subasta
-            s1.agregarArticulo(getArticuloPorNombre("Lavadora"));
-            s1.agregarArticulo(getArticuloPorNombre("Secadora"));
-            s1.agregarArticulo(getArticuloPorNombre("Tostadora"));
+            s1.AgregarArticulo(GetArticuloPorNombre("Lavadora"));
+            s1.AgregarArticulo(GetArticuloPorNombre("Secadora"));
+            s1.AgregarArticulo(GetArticuloPorNombre("Tostadora"));
 
-            s2.agregarArticulo(getArticuloPorNombre("Guitarra"));
-            s2.agregarArticulo(getArticuloPorNombre("Estuche de guitarra"));
-            s2.agregarArticulo(getArticuloPorNombre("Parlante"));
-
-
-            s3.agregarArticulo(getArticuloPorNombre("Laptop"));
-            s3.agregarArticulo(getArticuloPorNombre("Piano"));
-            s3.agregarArticulo(getArticuloPorNombre("Guitarra"));
-
-            s4.agregarArticulo(getArticuloPorNombre("Silla"));
-            s4.agregarArticulo(getArticuloPorNombre("Lavadora"));
-            s4.agregarArticulo(getArticuloPorNombre("Mesa"));
-            s4.agregarArticulo(getArticuloPorNombre("Secadora"));
-
-            s5.agregarArticulo(getArticuloPorNombre("Licuadora"));
-            s5.agregarArticulo(getArticuloPorNombre("Cafetera"));
-            s5.agregarArticulo(getArticuloPorNombre("Tostadora"));
-
-            s6.agregarArticulo(getArticuloPorNombre("Libro"));
-            s6.agregarArticulo(getArticuloPorNombre("Estantería"));
+            s2.AgregarArticulo(GetArticuloPorNombre("Guitarra"));
+            s2.AgregarArticulo(GetArticuloPorNombre("Estuche de guitarra"));
+            s2.AgregarArticulo(GetArticuloPorNombre("Parlante"));
 
 
-            s8.agregarArticulo(getArticuloPorNombre("Audífonos"));
-            s8.agregarArticulo(getArticuloPorNombre("Mochila"));
+            s3.AgregarArticulo(GetArticuloPorNombre("Laptop"));
+            s3.AgregarArticulo(GetArticuloPorNombre("Piano"));
+            s3.AgregarArticulo(GetArticuloPorNombre("Guitarra"));
+
+            s4.AgregarArticulo(GetArticuloPorNombre("Silla"));
+            s4.AgregarArticulo(GetArticuloPorNombre("Lavadora"));
+            s4.AgregarArticulo(GetArticuloPorNombre("Mesa"));
+            s4.AgregarArticulo(GetArticuloPorNombre("Secadora"));
+
+            s5.AgregarArticulo(GetArticuloPorNombre("Licuadora"));
+            s5.AgregarArticulo(GetArticuloPorNombre("Cafetera"));
+            s5.AgregarArticulo(GetArticuloPorNombre("Tostadora"));
+
+            s6.AgregarArticulo(GetArticuloPorNombre("Libro"));
+            s6.AgregarArticulo(GetArticuloPorNombre("Estantería"));
 
 
-            s9.agregarArticulo(getArticuloPorNombre("Zapatos"));
-            s9.agregarArticulo(getArticuloPorNombre("Camiseta"));
+            s8.AgregarArticulo(GetArticuloPorNombre("Audífonos"));
+            s8.AgregarArticulo(GetArticuloPorNombre("Mochila"));
 
 
-            s10.agregarArticulo(getArticuloPorNombre("Bicicleta"));
-            s10.agregarArticulo(getArticuloPorNombre("Raqueta de tenis"));
+            s9.AgregarArticulo(GetArticuloPorNombre("Zapatos"));
+            s9.AgregarArticulo(GetArticuloPorNombre("Camiseta"));
+
+
+            s10.AgregarArticulo(GetArticuloPorNombre("Bicicleta"));
+            s10.AgregarArticulo(GetArticuloPorNombre("Raqueta de tenis"));
 
 
             //Agrego ofertas a la subasta
-            s1.agregarOferta(new Oferta((GetClientePorNombre("Juan")), 125));
-            s1.agregarOferta(new Oferta((GetClientePorNombre("Carlos")), 350));
+            s1.AgregarOferta(new Oferta((GetClientePorNombre("Juan")), 125));
+            s1.AgregarOferta(new Oferta((GetClientePorNombre("Carlos")), 350));
 
-            s2.agregarOferta(new Oferta((GetClientePorNombre("Ana")), 350));
-            s2.agregarOferta(new Oferta((GetClientePorNombre("Luis")), 350));
+            s2.AgregarOferta(new Oferta((GetClientePorNombre("Ana")), 350));
+            s2.AgregarOferta(new Oferta((GetClientePorNombre("Luis")), 350));
 
 
 
@@ -363,7 +363,7 @@ namespace Clases
         #endregion
 
         //Metodo para filtrar un articulo por nombre
-        public Articulo getArticuloPorNombre(string nombreArticulo)
+        public Articulo GetArticuloPorNombre(string nombreArticulo)
         {
             foreach (Articulo a in _articulos)
             {
@@ -378,7 +378,7 @@ namespace Clases
         //Metodo para filtrar un cliente por nombre
         public Cliente GetClientePorNombre(string nombreCliente)
         {
-            foreach (Cliente c in getClientes())
+            foreach (Cliente c in GetClientes())
             {
                 if (c.Nombre == nombreCliente)
                 {

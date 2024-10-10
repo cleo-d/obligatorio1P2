@@ -28,7 +28,7 @@ namespace Clases
         }
         #endregion
 
-        private void validar()
+        private void Validar()
         {
           //Este Metodo de ValidarSaldoParaVenta no se tendria que correr al momento que un usuario quiera hacer una compra?
           //Dejo este metodo comentado ->
@@ -42,7 +42,7 @@ namespace Clases
                 throw new Exception("No tiene saldo para realizar la compra de la publicacion");
             }
         }
-        public void agregarArticulo(Articulo articulo)
+        public void AgregarArticulo(Articulo articulo)
         {
             try
             {

@@ -33,7 +33,7 @@ namespace UI
                         //Mostrar Lista de clientes
                         try
                         {
-                            List<Cliente> clientesAux = s.getClientes();
+                            List<Cliente> clientesAux = s.GetClientes();
 
                             foreach (Cliente c in clientesAux)
                             {
@@ -103,7 +103,7 @@ namespace UI
                             
                             
                             //En la clase articulo se valida las reglas de negocio para la cracion de Articulos
-                            s.altaArticulo(inputNomArt, inputCatArt, inputPrecioArt);
+                            s.AltaArticulo(inputNomArt, inputCatArt, inputPrecioArt);
 
                             Console.WriteLine($"-------------------------");
                             Console.WriteLine($"Articulo ingresado correctamente!");

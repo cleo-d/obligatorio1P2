@@ -25,7 +25,7 @@ namespace Clases
            
         }
         #endregion
-        public void agregarOferta(Oferta unaOferta)
+        public void AgregarOferta(Oferta unaOferta)
         {
             _listaOfertas.Add(unaOferta);
         }

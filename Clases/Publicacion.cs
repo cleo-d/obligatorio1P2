@@ -53,13 +53,13 @@ namespace Clases
 
         //get articulos
 
-        public List<Articulo> getArticulos()
+        public List<Articulo> GetArticulos()
         {
             return _listaArticulos;
         }
 
         //motodo que agregue un articulo a la lista de articulos de la punblicacion
-        public void agregarArticulo(Articulo unArticulo)
+        public void AgregarArticulo(Articulo unArticulo)
         {
             _listaArticulos.Add(unArticulo);
         }
