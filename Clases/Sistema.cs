@@ -144,12 +144,22 @@ namespace Clases
             Cliente c3 = new Cliente(1200.75, "Carlos", "López", "carlos.lopez@example.com", "carlospass");
             Cliente c4 = new Cliente(800.20, "Ana", "Martínez", "ana.martinez@example.com", "anapass");
             Cliente c5 = new Cliente(3000.00, "Luis", "Fernández", "luis.fernandez@example.com", "luifernpass");
+            Cliente c6 = new Cliente(1500.00, "Hector", "Pérez", "hector.perez@example.com", "pass123");
+            Cliente c7 = new Cliente(2000.50, "Pablo", "Gómez", "Pablo.gomez@example.com", "pass123");
+            Cliente c8 = new Cliente(1200.75, "Daniel", "López", "daniel.lopez@example.com", "pass123");
+            Cliente c9 = new Cliente(800.20, "Cecilia", "Martínez", "cecilia.martinez@example.com", "pass123");
+            Cliente c10 = new Cliente(3000.00, "Leticia", "Fernández", "leticia.fernandez@example.com", "pass123");
             //Agrego los clientes a la lista de usuarios
             _usuarios.Add(c1);
             _usuarios.Add(c2);
             _usuarios.Add(c3);
             _usuarios.Add(c4);
             _usuarios.Add(c5);
+            _usuarios.Add(c6);
+            _usuarios.Add(c7);
+            _usuarios.Add(c8);
+            _usuarios.Add(c9);
+            _usuarios.Add(c10);
         }
 
         private void PrecargaVentas()
