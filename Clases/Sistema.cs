@@ -227,6 +227,9 @@ namespace Clases
             _publicaciones.Add(v9);
             _publicaciones.Add(v10);
 
+
+            v1.CerrarPublicacion();
+
         }
      
         private void PrecargaSubastas()
@@ -287,7 +290,7 @@ namespace Clases
 
             s2.AgregarOferta(new Oferta((GetClientePorNombre("Ana")), 350));
             s2.AgregarOferta(new Oferta((GetClientePorNombre("Luis")), 350));
-
+            s1.CerrarPublicacion();
 
 
 

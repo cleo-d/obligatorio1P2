@@ -63,5 +63,8 @@ namespace Clases
         {
             _listaArticulos.Add(unArticulo);
         }
+
+        public abstract void CerrarPublicacion();
+
     }
 }
