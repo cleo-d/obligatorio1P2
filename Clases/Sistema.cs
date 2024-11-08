@@ -228,7 +228,7 @@ namespace Clases
             _publicaciones.Add(v10);
 
 
-            v1.CerrarPublicacion();
+            //v1.CerrarPublicacion();
 
         }
      
@@ -401,5 +401,18 @@ namespace Clases
             return null;
         }
 
+        public Publicacion GetArticuloPorId(int id)
+        {
+            foreach (Publicacion publicacion in _publicaciones)
+            {
+                if (publicacion.Id == id)
+                {
+                    return publicacion;
+                }
+                
+            }
+            return null;
+            //HAY QUE VALIDAR QUE NO RETURNE NULL CUANDO SE LLAMA A ESTA FUNCION
+        }
     }
 }

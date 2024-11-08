@@ -1,0 +1,30 @@
+﻿@using Clases
+
+@model IEnumerable<Clases.Publicacion>
+
+
+<h1>Lista de Publicaciones</h1>
+
+<table class="table table-dark table-striped">
+
+    <tr>
+        <th>Nombre</th>
+        <th>Estado</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (Publicacion p in Model)
+    {
+        <tr>
+            <td>@p.Nombre</td>
+            <td>@p.Estado</td>
+            <td>@p.PrecioPublicacion</td>
+            <td>@Html.ActionLink("Ver Publicacion", "Comprar", new { id = p.Id })</td>
+            @* Corregir actionLink 
+               Logica de revisar si esta abierta que elcliente pueda comprar u ofertar
+            *@
+
+        </tr>
+    }
+</table>
