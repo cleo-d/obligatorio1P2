@@ -2,43 +2,113 @@
 
 @model IEnumerable<Clases.Publicacion>
 
+@if (Context.Session.GetString("rolLogeado") == "CLI")
+{
+    <h1>Ventas</h1>
+    <table class="table table-dark table-striped">
 
-<h1>Lista de Publicaciones</h1>
+        <tr>
+            <th>Nombre</th>
+            <th>Ariculos</th>
+            <th>Estado</th>
+            <th>Precio</th>
+            <th>Comprar</th>
 
+
+        </tr>
+
+        @foreach (Publicacion p in Model)
+        {
+            if (p.Rol == "VEN")
+            {
+                <tr>
+                    <td>@p.Nombre</td>
+                    <td>
+                        @foreach (Articulo a in p._listaArticulos)
+                        {
+                            <p>@a.Nombre</p>
+                        }
+                    </td>
+
+                    <td>@p.Estado</td>
+                    <td>@p.PrecioPublicacion</td>
+                    @if(p.Estado == Estado.Abierta)
+                    {
+                        <td>
+                            @Html.ActionLink("Comprar", "Detalles", new { id = p.Id })
+                            
+                        </td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+
+
+
+                </tr>
+            }
+
+        }
+    </table>
+}
+<h1>Subastas</h1>
 <table class="table table-dark table-striped">
 
     <tr>
         <th>Nombre</th>
-        <th>Estado</th>
-        <th>Precio</th>
-        <th>Tipo</th>
-        <th>Acciones</th>
         <th>Ariculos</th>
+        <th>Estado</th>
+        <th>Mejor Oferta</th>
+        @if (Context.Session.GetString("rolLogeado") == "ADM")
+        {
+            <th>Cerrar oferta</th>
+        }
+        else
+        {
+            <th>Hacer oferta</th>
+        }
+        
+        
     </tr>
 
     @foreach (Publicacion p in Model)
     {
-        <tr>
-            <td>@p.Nombre</td>
-            <td>@p.Estado</td>
-            <td>@p.PrecioPublicacion</td>
-            @if(p.Rol == "SUB")
-            {
-                <td>Subasta</td>
-            }else if(p.Rol == "VEN")
-            {
-                <td>Venta</td>
-            }
+        @if (p.Rol == "SUB")
+        {
+            <tr>
+                <td>@p.Nombre</td>
+                <td>
+                    @foreach (Articulo a in p._listaArticulos)
+                    {
+                        <p>@a.Nombre</p>
+                    }
+                </td>
 
-            <td>@Html.ActionLink("Ver Publicacion", "Comprar", new { id = p.Id })</td>
-            <td>@foreach (Articulo a in p._listaArticulos)
+                <td>@p.Estado</td>
+                <td>@p.PrecioPublicacion</td>
+                @if (Context.Session.GetString("rolLogeado") == "ADM")
                 {
-                    <p>@a.Nombre</p>
-                }</td>
-            @*
-               Logica de revisar si esta abierta que elcliente pueda comprar u ofertar
-            *@
+                    @if (p.Estado == Estado.Abierta)
+                    {
+                        <td>@Html.ActionLink("Cerrar Oferta", "Detalles", new { id = p.Id })</td>
+                    }else
+                    {
+                        <td></td>
+                    }
+                    
+                    
+                }
+                else
+                {
+                    <td>@Html.ActionLink("Ofertar", "Detalles", new { id = p.Id })</td>
+                }
 
-        </tr>
+                
+                
+
+            </tr>
+        }
+        
     }
 </table>

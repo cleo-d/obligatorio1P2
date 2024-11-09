@@ -305,7 +305,7 @@ namespace Clases
 
             s2.AgregarOferta(new Oferta((GetClientePorNombre("Ana")), 350));
             s2.AgregarOferta(new Oferta((GetClientePorNombre("Luis")), 350));
-            s1.CerrarPublicacion();
+            
 
 
 
@@ -441,6 +441,32 @@ namespace Clases
                 
             }return null;
         }
-	}
+
+        public Publicacion GetPublicacionPorId(int id)
+        {
+            foreach (Publicacion p in _publicaciones)
+            {
+                if(p.Id == id)
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+
+        public Usuario GetUsuarioPorId(int? v)
+        {
+            foreach (Usuario u in _usuarios)
+            {
+                if(u.Id == v)
+                {
+                    return u;
+                }
+            }
+            return null;
+        }
+
+        
+    }
 
 }

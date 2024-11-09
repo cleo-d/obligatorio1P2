@@ -20,6 +20,7 @@ namespace Clases
         public DateTime FechaCompra { get; set; }
 
         public Cliente ClienteCompra { get; set; }
+        public Usuario UsuarioCierre { get; set; }
 
         public string Rol { get; set; }
 
@@ -73,7 +74,7 @@ namespace Clases
             _listaArticulos.Add(unArticulo);
         }
 
-        public abstract void CerrarPublicacion();
+        public abstract void CerrarPublicacion(Usuario u);
         public abstract void GetRol();
         
 

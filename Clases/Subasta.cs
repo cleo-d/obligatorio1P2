@@ -42,14 +42,15 @@ namespace Clases
 
 
 
-        public override void CerrarPublicacion()
+        public override void CerrarPublicacion(Usuario u)
         {
-            if (Estado == Estado.Abierta)
+            if (Estado == Estado.Abierta && u.Rol == "ADM")
             {
                 BuscarMejorOferta();
                 Estado = Estado.Cerrada;
                 FechaCompra = DateTime.Now;
                 ClienteCompra = MejorOferta.Cliente;
+                UsuarioCierre = u;
 
 
             }

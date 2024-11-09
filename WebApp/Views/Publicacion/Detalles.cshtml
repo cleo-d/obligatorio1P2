@@ -1,0 +1,48 @@
+﻿@using Clases
+@model Clases.Publicacion
+
+    <h1>Detalles de la Publicacion </h1>
+ 
+<h2>@Model.Nombre</h2>
+
+<h3>Lista de articulos de </h3>
+<ul>
+    
+     @foreach (Articulo a in Model._listaArticulos)
+        {
+        <li>@a.Nombre</li>
+        }
+    
+     <br />
+
+</ul>
+<p>@Model.PrecioPublicacion</p>
+<p>@Model.FechaPublicacion</p>
+
+@if(Context.Session.GetString("rolLogeado") == "CLI")
+{
+    @if (Model.Rol == "VEN")
+    {
+        @Html.ActionLink("Comprar", "Comprar", new { id = @Model.Id })
+        ;
+    }
+    else if (Model.Rol == "SUB")
+    {
+        <input type="number" name="Monto" placeholder="Ingrese una oferta" />
+        @Html.ActionLink("Hacer oferta", "HacerOferta", new { id = @Model.Id })
+        ;
+    }
+}
+else if (Context.Session.GetString("rolLogeado") == "ADM")
+{
+    if (Model.Rol == "SUB")
+    {
+        
+        @Html.ActionLink("Cerrar Subasta", "Comprar", new { id = @Model.Id })
+        ;
+    }
+    
+}
+
+
+

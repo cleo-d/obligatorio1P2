@@ -87,17 +87,17 @@ namespace Clases
             }
         }
 
-        public override void CerrarPublicacion()
+        public override void CerrarPublicacion(Usuario u)
         {
-            if (Estado == Estado.Abierta)
+            if (Estado == Estado.Abierta && u.Rol == "CLI")
             {
                     try
                     {
 
-            
+                    ClienteCompra = (Cliente)u;
+                    UsuarioCierre = u;
                     ValidarSaldoParaVenta();
                     Estado = Estado.Cerrada;
-                
                     FechaCompra = DateTime.Now;
             
 

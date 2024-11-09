@@ -23,6 +23,7 @@ namespace Clases
         public Oferta()
         {
             Id = UltimoId++;
+            FechaOferta = DateTime.Now;
         }
 
         public Oferta(Cliente cliente, double monto)
