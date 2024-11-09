@@ -11,7 +11,9 @@
         <th>Nombre</th>
         <th>Estado</th>
         <th>Precio</th>
+        <th>Tipo</th>
         <th>Acciones</th>
+        <th>Ariculos</th>
     </tr>
 
     @foreach (Publicacion p in Model)
@@ -20,8 +22,20 @@
             <td>@p.Nombre</td>
             <td>@p.Estado</td>
             <td>@p.PrecioPublicacion</td>
+            @if(p.Rol == "SUB")
+            {
+                <td>Subasta</td>
+            }else if(p.Rol == "VEN")
+            {
+                <td>Venta</td>
+            }
+
             <td>@Html.ActionLink("Ver Publicacion", "Comprar", new { id = p.Id })</td>
-            @* Corregir actionLink 
+            <td>@foreach (Articulo a in p._listaArticulos)
+                {
+                    <p>@a.Nombre</p>
+                }</td>
+            @*
                Logica de revisar si esta abierta que elcliente pueda comprar u ofertar
             *@
 

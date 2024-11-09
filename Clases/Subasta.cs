@@ -16,20 +16,25 @@ namespace Clases
         #region CONSTRUCTORES
         public Subasta()
         {
+            BuscarMejorOferta();
             
         }
 
         public Subasta(string Nombre, Estado Estado, DateTime FechaPublicacion)
             : base(Nombre, Estado, FechaPublicacion)
         {
-           
+            BuscarMejorOferta();
             
-           
+
+
+
         }
         #endregion
         public void AgregarOferta(Oferta unaOferta)
         {
             _listaOfertas.Add(unaOferta);
+            BuscarMejorOferta();
+
         }
 
 
@@ -54,19 +59,24 @@ namespace Clases
         //Busco la mejor oferta de la lista de ofertas de la subasta
         private void BuscarMejorOferta()
         {
-            double montoOferta = 0;
-
             foreach (Oferta o in _listaOfertas)
             {
                 
 
-                if(o.Monto > montoOferta)
+                if(o.Monto > PrecioPublicacion)
                 {
-                    montoOferta = o.Monto;
+                    PrecioPublicacion = o.Monto;
                     MejorOferta = o;
                 }
 
             }
         }
+
+        public override void GetRol()
+        {
+            Rol = "SUB";
+        }
+        
+
     }
 }

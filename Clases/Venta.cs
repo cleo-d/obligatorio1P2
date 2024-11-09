@@ -48,11 +48,11 @@ namespace Clases
         {
             if (OfertaRelampago)
             {
-                PrecioVenta = precioAux * 0.8;
+                PrecioPublicacion = precioAux * 0.8;
             }
             else 
             {
-                PrecioVenta = precioAux;
+                PrecioPublicacion = precioAux;
             }
 
         }
@@ -79,6 +79,8 @@ namespace Clases
                 articulo.Validar();
                 _listaArticulos.Add(articulo);
                 CalcularPrecio();
+
+
             }
             catch (Exception e) {
                 throw;
@@ -108,6 +110,11 @@ namespace Clases
             }
 
 
-    }
+        }
+        public override void GetRol()
+        {
+            Rol = "VEN";
+        }
+        
     }
 }

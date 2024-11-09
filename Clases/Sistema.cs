@@ -25,7 +25,7 @@ namespace Clases
         {
             if (_instancia == null)
             {
-                return new Sistema();
+                _instancia = new Sistema();
             }
             return _instancia;
         }
@@ -63,6 +63,21 @@ namespace Clases
                 throw new Exception("La lista de clientes esta vacia");
             }
             return clientesAux;
+        }
+        //Metodo para dar de alta a un Usuario
+
+        public void AltaCliente(Cliente c)
+        {
+            try
+            {
+                c.Validar();
+                _usuarios.Add(c);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
         }
 
         //Metodo para obtener articulos por categoria
@@ -414,5 +429,18 @@ namespace Clases
             return null;
             //HAY QUE VALIDAR QUE NO RETURNE NULL CUANDO SE LLAMA A ESTA FUNCION
         }
-    }
+
+		public Usuario Login(string email, string contrasenia)
+		{
+            foreach (Usuario u in _usuarios)
+            {
+                if(u.Email.Equals(email) && u.Contrasenia.Equals(contrasenia))
+                {
+                    return u;
+                }
+                
+            }return null;
+        }
+	}
+
 }

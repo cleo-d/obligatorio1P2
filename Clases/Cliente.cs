@@ -39,6 +39,9 @@ namespace Clases
             }
         }
 
-        
+        public override void GetRol()
+        {
+            Rol = "CLI";
+        }
     }
 }

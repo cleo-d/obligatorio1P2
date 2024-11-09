@@ -19,5 +19,10 @@ namespace Clases
             
         }
         #endregion  
+
+        public override void GetRol()
+        {
+            Rol = "ADM";
+        }
     }
 }

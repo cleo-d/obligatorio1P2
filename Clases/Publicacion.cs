@@ -21,13 +21,17 @@ namespace Clases
 
         public Cliente ClienteCompra { get; set; }
 
+        public string Rol { get; set; }
+
         public double PrecioPublicacion { get; set; }
         //Agregar Metodo que agarre el precio de la Venta o la mejor oferta de la Subasta
         #endregion
-        #region CONSTRUCTORES
+       #region CONSTRUCTORES
         public Publicacion()
         {
             Id = UltimoId++;
+            GetRol();
+            
         }
 
         public Publicacion(string nombre, Estado estado, DateTime fechaPublicacion)
@@ -37,6 +41,8 @@ namespace Clases
             Estado = estado;
             FechaPublicacion = fechaPublicacion;
             Validar();
+            GetRol();
+            
         }
         #endregion
 
@@ -68,6 +74,8 @@ namespace Clases
         }
 
         public abstract void CerrarPublicacion();
+        public abstract void GetRol();
+        
 
     }
 }

@@ -16,12 +16,14 @@ namespace Clases
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Contrasenia { get; set; }
+        public string Rol { get; set; }
 
         #endregion
         #region CONSTRUCTORES
         public Usuario()
         {
             Id = UltimoId++;
+            GetRol();
         }
 
         public Usuario(string nombre, string apellido, string email, string contrasenia)
@@ -32,7 +34,8 @@ namespace Clases
             Email = email;
             Contrasenia = contrasenia;
             Validar();
-        }
+			GetRol();
+		}
         #endregion
 
         public void Validar()
@@ -71,6 +74,8 @@ namespace Clases
                 throw new Exception("El Contraseña no puede estar vacio");
             }
         }
+
+        public abstract void GetRol();
 
 
 
