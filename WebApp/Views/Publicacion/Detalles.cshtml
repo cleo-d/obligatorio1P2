@@ -18,14 +18,46 @@
                     </ul>
                     <p class="card-text">Precio: $@Model.PrecioPublicacion</p>
                     <p class="card-text">Fecha: @Model.FechaPublicacion.ToString("dd/MM/yyyy")</p>
-                    <form method="post">
-                        <div class="input-group mb-3">
-                            <input type="number" name="Monto" class="form-control" placeholder="Ingrese una oferta" />
-                            <div class="input-group-append">
-                                <input type="submit" value="Hacer Oferta" class="btn btn-primary" />
-                            </div>
-                        </div>
-                    </form>
+                    @if (Context.Session.GetString("rolLogeado") == "CLI")
+                    {
+                        @if (Model.Rol == "VEN")
+                        {
+                            @Html.ActionLink("Comprar", "Comprar", new { id = @Model.Id })
+                            ;
+                        }
+                        else if (Model.Rol == "SUB")
+                        {
+                            <form method="post" asp-controller="OfertaController" asp-action="Create">
+                                <div class="input-group mb-3">
+                                    <input type="number" name="Monto" class="form-control" placeholder="Ingrese una oferta" />
+                                    <div class="input-group-append">
+                                        <input type="submit" value="Hacer Oferta" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                    }
+                    else if (Context.Session.GetString("rolLogeado") == "ADM")
+                    {
+                        if (Model.Rol == "SUB")
+                        {
+
+                            @Html.ActionLink("Cerrar Subasta", "Comprar", new { id = @Model.Id })
+                            ;
+                        }
+
+                    }
+
+
+
+
+
+
+
+
+
+
+                   
                 </div>
             </div>
         </div>
@@ -35,7 +67,7 @@
 
 
 
-
+@* 
 
 <h2>@Model.Nombre</h2>
 
@@ -79,7 +111,8 @@ else if (Context.Session.GetString("rolLogeado") == "ADM")
         ;
     }
     
-}
+} *@
 
+<p>@ViewBag.Msg</p>
 
 

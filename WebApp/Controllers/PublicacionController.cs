@@ -29,8 +29,17 @@ namespace WebApp.Controllers
             Publicacion publicacionEncontrada = s.GetPublicacionPorId(id);
             Usuario usuarioCierrePublicacion = s.GetUsuarioPorId(HttpContext.Session.GetInt32("idLogeado"));
 
+            try
+            {
+                publicacionEncontrada.CerrarPublicacion(usuarioCierrePublicacion);
+            }
+            catch (Exception e)
+            {
 
-            publicacionEncontrada.CerrarPublicacion(usuarioCierrePublicacion);
+                ViewBag.Msg = e.Message;
+                return View();
+            }
+            
 
             return RedirectToAction("Index");
         }

@@ -4,111 +4,102 @@
 
 @if (Context.Session.GetString("rolLogeado") == "CLI")
 {
-    <h1>Ventas</h1>
-    <table class="table table-dark table-striped">
+    <h1 class="text-center">Ventas</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
 
-        <tr>
-            <th>Nombre</th>
-            <th>Ariculos</th>
-            <th>Estado</th>
-            <th>Precio</th>
-            <th>Comprar</th>
+       @foreach (Publicacion p in Model)
+       {
+          if (p.Rol == "VEN")
+          {
+                <div class="col">
+                    <div class="card h-100 mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                    <h4 class="card-title">@p.Nombre</h4>
+                                    <h5 class="card-title">Estado: @p.Estado</h5>
 
+                                    <ul>
+                                        @foreach (Articulo a in p._listaArticulos)
+                                        {
+                                            <li>@a.Nombre</li>
+                                        }
+                                    </ul>
+                                    <h5>@p.PrecioPublicacion</h5>
 
-        </tr>
+                                    @if (p.Estado == Estado.Abierta)
+                                    {
 
-        @foreach (Publicacion p in Model)
-        {
-            if (p.Rol == "VEN")
-            {
-                <tr>
-                    <td>@p.Nombre</td>
-                    <td>
-                        @foreach (Articulo a in p._listaArticulos)
-                        {
-                            <p>@a.Nombre</p>
-                        }
-                    </td>
+                                        <p class="text-end">
+                                            @Html.ActionLink("Comprar", "Detalles", new { id = p.Id })
 
-                    <td>@p.Estado</td>
-                    <td>@p.PrecioPublicacion</td>
-                    @if(p.Estado == Estado.Abierta)
-                    {
-                        <td>
-                            @Html.ActionLink("Comprar", "Detalles", new { id = p.Id })
-                            
-                        </td>
-                    }
-                    else
-                    {
-                        <td></td>
-                    }
-
-
-
-                </tr>
-            }
-
-        }
-    </table>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p></p>
+                                    }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+          }
+       }
+    </div>
 }
-<h1>Subastas</h1>
-<table class="table table-dark table-striped">
 
-    <tr>
-        <th>Nombre</th>
-        <th>Ariculos</th>
-        <th>Estado</th>
-        <th>Mejor Oferta</th>
-        @if (Context.Session.GetString("rolLogeado") == "ADM")
-        {
-            <th>Cerrar oferta</th>
-        }
-        else
-        {
-            <th>Hacer oferta</th>
-        }
-        
-        
-    </tr>
+<h1 class="text-center">Subastas</h1>
+<div class="row row-cols-1 row-cols-md-3 g-4">
 
     @foreach (Publicacion p in Model)
     {
-        @if (p.Rol == "SUB")
+        if (p.Rol == "SUB")
         {
-            <tr>
-                <td>@p.Nombre</td>
-                <td>
-                    @foreach (Articulo a in p._listaArticulos)
-                    {
-                        <p>@a.Nombre</p>
-                    }
-                </td>
+            <div class="col">
+                <div class="card h-100 mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title">@p.Nombre</h4>
+                                <h5 class="card-title">Estado: @p.Estado</h5>
 
-                <td>@p.Estado</td>
-                <td>@p.PrecioPublicacion</td>
-                @if (Context.Session.GetString("rolLogeado") == "ADM")
-                {
-                    @if (p.Estado == Estado.Abierta)
-                    {
-                        <td>@Html.ActionLink("Cerrar Oferta", "Detalles", new { id = p.Id })</td>
-                    }else
-                    {
-                        <td>OFERTA CERRADA</td>
-                    }
-                    
-                    
-                }
-                else
-                {
-                    <td>@Html.ActionLink("Ofertar", "Detalles", new { id = p.Id })</td>
-                }
+                                <ul>
+                                    @foreach (Articulo a in p._listaArticulos)
+                                    {
+                                        <li>@a.Nombre</li>
+                                    }
+                                </ul>
+                                <h5>Mejor oferta: @p.PrecioPublicacion</h5>
 
-                
-                
+                                @if (Context.Session.GetString("rolLogeado") == "ADM")
+                                {
+                                    @if (p.Estado == Estado.Abierta)
+                                    {
+                                        <p>@Html.ActionLink("Cerrar Oferta", "Detalles", new { id = p.Id })</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Subasta Cerrada</p>
+                                    }
 
-            </tr>
+
+                                }
+                                else
+                                {
+                                    <p>@Html.ActionLink("Ofertar", "Detalles", new { id = p.Id })</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
-        
     }
-</table>
+</div>
