@@ -444,14 +444,16 @@ namespace Clases
 
         public Publicacion GetPublicacionPorId(int id)
         {
+            Publicacion pEncontrada = null;
             foreach (Publicacion p in _publicaciones)
             {
                 if(p.Id == id)
                 {
-                    return p;
+                    pEncontrada = p;
+                    break;
                 }
             }
-            return null;
+            return pEncontrada;
         }
 
         public Usuario GetUsuarioPorId(int? v)

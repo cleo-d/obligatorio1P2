@@ -2,7 +2,41 @@
 @model Clases.Publicacion
 
     <h1>Detalles de la Publicacion </h1>
- 
+
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Nombre</h5>
+                    <ul>
+                        @foreach (Articulo a in Model._listaArticulos)
+                        {
+                            <li>@a.Nombre</li>
+                        }
+                    </ul>
+                    <p class="card-text">Precio: $@Model.PrecioPublicacion</p>
+                    <p class="card-text">Fecha: @Model.FechaPublicacion.ToString("dd/MM/yyyy")</p>
+                    <form method="post">
+                        <div class="input-group mb-3">
+                            <input type="number" name="Monto" class="form-control" placeholder="Ingrese una oferta" />
+                            <div class="input-group-append">
+                                <input type="submit" value="Hacer Oferta" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 <h2>@Model.Nombre</h2>
 
 <h3>Lista de articulos de </h3>
@@ -16,6 +50,7 @@
      <br />
 
 </ul>
+<p></p>
 <p>@Model.PrecioPublicacion</p>
 <p>@Model.FechaPublicacion</p>
 
@@ -28,9 +63,11 @@
     }
     else if (Model.Rol == "SUB")
     {
-        <input type="number" name="Monto" placeholder="Ingrese una oferta" />
-        @Html.ActionLink("Hacer oferta", "HacerOferta", new { id = @Model.Id })
-        ;
+        <form method="post">
+            <input type="number" name="Monto" placeholder="Ingrese una oferta" />
+            <input type="button" value="Hacer Oferta" />
+        </form>
+      
     }
 }
 else if (Context.Session.GetString("rolLogeado") == "ADM")
