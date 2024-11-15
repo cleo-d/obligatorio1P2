@@ -23,8 +23,10 @@ namespace WebApp.Controllers
             Publicacion publicacionEncontrada = s.GetPublicacionPorId(Id);
             Usuario usuarioOferta = s.GetUsuarioPorId(HttpContext.Session.GetInt32("idLogeado"));
 
-            s.AltaOferta(usuarioOferta as Cliente, Monto);
             Oferta o = s.AltaOferta(usuarioOferta as Cliente, Monto);
+
+            //Agrego la oferta nueva a la lista de ofertas de la subasta
+            (publicacionEncontrada as Subasta).AgregarOferta(o);
 
             return RedirectToAction();
         }

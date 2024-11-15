@@ -79,7 +79,5 @@ namespace Clases
         {
             Rol = "SUB";
         }
-        
-
     }
 }
