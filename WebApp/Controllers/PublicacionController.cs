@@ -31,7 +31,7 @@ namespace WebApp.Controllers
 
             try
             {
-                publicacionEncontrada.CerrarPublicacion(usuarioCierrePublicacion);
+                publicacionEncontrada.CerrarPublicacion(usuarioCierrePublicacion, publicacionEncontrada.PrecioPublicacion);
             }
             catch (Exception e)
             {
@@ -43,7 +43,9 @@ namespace WebApp.Controllers
 
             return RedirectToAction("Index");
         }
-        public IActionResult HacerOferta(int id, double monto)
+        
+        [HttpPost]
+        public IActionResult Detalles(int id, double Monto)
         {
             Publicacion publicacionEncontrada = s.GetPublicacionPorId(id);
             Usuario usuarioOferta = s.GetUsuarioPorId(HttpContext.Session.GetInt32("idLogeado"));

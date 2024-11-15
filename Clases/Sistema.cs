@@ -144,7 +144,7 @@ namespace Clases
         private void PrecargaAdministradores()
         {
             Administrador admin1 = new Administrador("Pedro", "Rodríguez", "pedro.rodriguez@example.com", "adminpass1");
-            Administrador admin2 = new Administrador("Sofía", "Hernández", "sofia.hernandez@example.com", "adminpass2");
+            Administrador admin2 = new Administrador("Sofía", "Hernández", "s", "s");
             Administrador admin3 = new Administrador("David", "García", "david.garcia@example.com", "adminpass3");
             //Agrego los administradores a la lista de usuarios
             _usuarios.Add(admin1);
@@ -468,7 +468,26 @@ namespace Clases
             return null;
         }
 
-        
+		public void CargarSaldoUsuario(Usuario u, double saldo)
+		{
+			Cliente u2 = u as Cliente;
+
+            u2.Saldo += saldo;
+		}
+
+        public Oferta AltaOferta(Cliente c, double unMonto)
+        {
+            Oferta o = null
+            try
+            {
+              o = new Oferta(c, unMonto);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return o;
+        }
     }
 
 }

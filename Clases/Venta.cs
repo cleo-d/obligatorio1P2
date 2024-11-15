@@ -87,16 +87,17 @@ namespace Clases
             }
         }
 
-        public override void CerrarPublicacion(Usuario u)
+        public override void CerrarPublicacion(Usuario u, double unMonto)
         {
             if (Estado == Estado.Abierta && u.Rol == "CLI")
             {
                     try
                     {
 
-                    ClienteCompra = (Cliente)u;
+                    ClienteCompra = u as Cliente;
                     UsuarioCierre = u;
                     ValidarSaldoParaVenta();
+                    RestarSaldoUsuario(ClienteCompra , unMonto);
                     Estado = Estado.Cerrada;
                     FechaCompra = DateTime.Now;
             
@@ -111,6 +112,12 @@ namespace Clases
 
 
         }
+
+        private void RestarSaldoUsuario(Cliente u, double unMonto)
+        {
+          u.Saldo -= unMonto;
+        }
+
         public override void GetRol()
         {
             Rol = "VEN";

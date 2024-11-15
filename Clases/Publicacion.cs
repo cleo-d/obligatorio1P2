@@ -74,7 +74,7 @@ namespace Clases
             _listaArticulos.Add(unArticulo);
         }
 
-        public abstract void CerrarPublicacion(Usuario u);
+        public abstract void CerrarPublicacion(Usuario u, double unMonto);
         public abstract void GetRol();
         
 

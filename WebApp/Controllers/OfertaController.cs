@@ -10,13 +10,23 @@ namespace WebApp.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult Create(int id, double monto)
+		public IActionResult Create()
+		{
+
+			return View();
+		}
+
+
+		[HttpPost]
+        public IActionResult Create(int Id, double Monto)
         {
-            Publicacion publicacionEncontrada = s.GetPublicacionPorId(id);
+            Publicacion publicacionEncontrada = s.GetPublicacionPorId(Id);
             Usuario usuarioOferta = s.GetUsuarioPorId(HttpContext.Session.GetInt32("idLogeado"));
 
-            return RedirectToAction("Index","PublicacionController");
+            s.AltaOferta(usuarioOferta as Cliente, Monto);
+            Oferta o = s.AltaOferta(usuarioOferta as Cliente, Monto);
+
+            return RedirectToAction();
         }
     }
 }

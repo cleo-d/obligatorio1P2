@@ -1,0 +1,13 @@
+﻿@using Clases
+@model Clases.Cliente
+
+
+
+
+<h3>Saldo Actual: </h3>
+<h4>$@Model.Saldo</h4>
+
+<form method="post">
+	<input type="number" name="saldo" value="" placeholder="Monto a agregar" />
+	<input type="submit" name="name" value="Agregar Saldo" />
+</form>

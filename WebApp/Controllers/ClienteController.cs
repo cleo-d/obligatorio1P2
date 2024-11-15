@@ -30,6 +30,22 @@ namespace WebApp.Controllers
 
             return View();
         }
-    }
+
+        public IActionResult CargarSaldo()
+        {
+            Usuario u = s.GetUsuarioPorId(HttpContext.Session.GetInt32("idLogeado"));
+
+            return View(u);
+        }
+
+        [HttpPost]
+		public IActionResult CargarSaldo(Double saldo)
+		{
+			Usuario u = s.GetUsuarioPorId(HttpContext.Session.GetInt32("idLogeado"));
+
+            s.CargarSaldoUsuario(u, saldo);
+			return View(u);
+		}
+	}
     
 }
