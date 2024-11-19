@@ -477,10 +477,11 @@ namespace Clases
 
         public Oferta AltaOferta(Cliente c, double unMonto)
         {
-            Oferta o = null
+            Oferta o = null;
             try
             {
               o = new Oferta(c, unMonto);
+              
             }
             catch (Exception e)
             {

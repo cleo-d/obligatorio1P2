@@ -43,7 +43,7 @@ namespace Clases
             ValidarNombre();
             ValidarApellido();
             ValidarEmail();
-            ValidarContrasenia();
+            //ValidarContrasenia();
         }
 
         private void ValidarNombre()
@@ -67,13 +67,14 @@ namespace Clases
                 throw new Exception("El Email no puede estar vacio");
             }
         }
-        private void ValidarContrasenia()
-        {
-            if (String.IsNullOrEmpty(Contrasenia))
-            {
-                throw new Exception("El Contraseña no puede estar vacio");
-            }
-        }
+        //private void ValidarContrasenia()
+        //{
+        //    if (Contrasenia.Length < 8)
+        //    {
+        //        throw new Exception("La contraseña no puede ser menor a 8 digitos");
+        //    }        
+        
+        //}
 
         public abstract void GetRol();
 

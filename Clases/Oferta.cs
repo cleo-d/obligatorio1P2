@@ -31,7 +31,7 @@ namespace Clases
             Id = UltimoId++;
             Cliente = cliente;
             Monto = monto;
-           // FechaOferta = DateTime.Now; ver metodo datetime xq no me registra el dia q se hace la oferta
+            FechaOferta = DateTime.Now;
             Validar();
         }
         #endregion

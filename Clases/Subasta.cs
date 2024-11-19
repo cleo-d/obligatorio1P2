@@ -32,9 +32,13 @@ namespace Clases
         #endregion
         public void AgregarOferta(Oferta unaOferta)
         {
-            _listaOfertas.Add(unaOferta);
-            BuscarMejorOferta();
-
+            if(unaOferta.Monto > MejorOferta.Monto)
+            {
+                _listaOfertas.Add(unaOferta);
+                BuscarMejorOferta();
+            }
+            //este metodo hay q verlo bien porque tal vez no hay q hacer el metodo Buscar mejor oferta
+           
         }
 
 
@@ -72,7 +76,10 @@ namespace Clases
                     MejorOferta = o;
                 }
 
+
             }
+            
+            
         }
 
         public override void GetRol()

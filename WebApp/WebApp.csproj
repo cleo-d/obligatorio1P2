@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Clases\Clases.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Oferta\" />
+  </ItemGroup>
+
 </Project>
