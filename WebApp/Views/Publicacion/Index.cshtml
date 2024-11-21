@@ -69,6 +69,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">@p.Nombre</h4>
                                 <h5 class="card-title">Estado: @p.Estado</h5>
+                                <h5 class="card-title">Fecha: @p.FechaPublicacion.ToShortDateString()</h5>
 
                                 <ul>
                                     @foreach (Articulo a in p._listaArticulos)
@@ -82,10 +83,11 @@
                                 {
                                     @if (p.Estado == Estado.Abierta)
                                     {
-                                        <p>@Html.ActionLink("Cerrar Oferta", "Detalles", new { id = p.Id })</p>
+                                        <p>@Html.ActionLink("Cerrar subasta", "Detalles", new { id = p.Id })</p>
                                     }
                                     else
                                     {
+                                        <p>Fecha cerrada: @p.FechaCompra.ToShortDateString()</p>
                                         <p>Subasta Cerrada</p>
                                     }
 

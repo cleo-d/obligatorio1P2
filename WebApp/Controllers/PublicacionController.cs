@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace WebApp.Controllers
 {
@@ -12,6 +13,7 @@ namespace WebApp.Controllers
         public IActionResult Index()
         {
             IEnumerable<Publicacion> publicaciones = s.GetPublicaciones();
+            //puedo ya mandar las publicaciones ordenadas por fecha y q queden todas ordenadas 
             
             return View(publicaciones);
         }
@@ -19,7 +21,9 @@ namespace WebApp.Controllers
         public IActionResult Detalles(int id)
         {
             Publicacion publicacionEncontrada = s.GetPublicacionPorId(id);
-           
+            
+
+
             return View(publicacionEncontrada);
         }
 
@@ -32,16 +36,17 @@ namespace WebApp.Controllers
             try
             {
                 publicacionEncontrada.CerrarPublicacion(usuarioCierrePublicacion, publicacionEncontrada.PrecioPublicacion);
+                return RedirectToAction("Index");
             }
             catch (Exception e)
             {
 
                 ViewBag.Msg = e.Message;
-                return View();
+                return RedirectToAction("Detalles", new { id = id });
             }
             
 
-            return RedirectToAction("Index");
+            
         }
         
         [HttpPost]

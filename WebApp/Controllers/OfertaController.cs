@@ -32,8 +32,11 @@ namespace WebApp.Controllers
             {
 
                 ViewBag.Msg = e.Message;
-                return View("Detalles", "Publicacion");
+                //como pasar el modelo a la vista de detalles para mostrarlo
+                return RedirectToAction("Detalles", "Publicacion", new { id = Id });
+
             }
+            
 
         }
     }

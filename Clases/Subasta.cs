@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +17,14 @@ namespace Clases
         #region CONSTRUCTORES
         public Subasta()
         {
-            BuscarMejorOferta();
+            //BuscarMejorOferta();
             
         }
 
         public Subasta(string Nombre, Estado Estado, DateTime FechaPublicacion)
             : base(Nombre, Estado, FechaPublicacion)
         {
-            BuscarMejorOferta();
+            //BuscarMejorOferta();
             
 
 
@@ -32,54 +33,38 @@ namespace Clases
         #endregion
         public void AgregarOferta(Oferta unaOferta)
         {
-            if(unaOferta.Monto > MejorOferta.Monto)
+            
+            if(unaOferta.Monto > PrecioPublicacion)
             {
+                PrecioPublicacion = unaOferta.Monto;
                 _listaOfertas.Add(unaOferta);
-                BuscarMejorOferta();
+                MejorOferta = unaOferta;
             }
-            //este metodo hay q verlo bien porque tal vez no hay q hacer el metodo Buscar mejor oferta
+                else
+                {
+                    throw new Exception("La oferta debe ser superior al precio que ya fue ofertado");
+                }
            
         }
-
-
-
-
-
-
         public override void CerrarPublicacion(Usuario u, double unMonto)
         {
             if (Estado == Estado.Abierta && u.Rol == "ADM")
             {
-                BuscarMejorOferta();
-           
+                
                 Estado = Estado.Cerrada;
                 FechaCompra = DateTime.Now;
-                ClienteCompra = MejorOferta.Cliente;
-                UsuarioCierre = u;
-                ClienteCompra.Saldo -= MejorOferta.Monto;
-
-
+                validarClienteCompra(u);
             }
         }
 
-
-        //Busco la mejor oferta de la lista de ofertas de la subasta
-        private void BuscarMejorOferta()
+        private void validarClienteCompra(Usuario u)
         {
-            foreach (Oferta o in _listaOfertas)
+            if(MejorOferta != null)
             {
-                
-
-                if(o.Monto > PrecioPublicacion)
-                {
-                    PrecioPublicacion = o.Monto;
-                    MejorOferta = o;
-                }
-
-
+                ClienteCompra = MejorOferta.Cliente;
+                UsuarioCierre = u;
+                ClienteCompra.Saldo -= MejorOferta.Monto;
             }
-            
-            
         }
 
         public override void GetRol()

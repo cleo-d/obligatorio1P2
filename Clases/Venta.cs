@@ -106,7 +106,7 @@ namespace Clases
                 catch (Exception e)
                     {
 
-                    throw;
+                    throw e;
                     }
             }
 

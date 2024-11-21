@@ -1,5 +1,7 @@
 ﻿@using Clases
 @model Clases.Publicacion
+@if(Model != null){
+
 
     <h1>Detalles de la Publicacion </h1>
 
@@ -51,6 +53,8 @@
         </div>
     </div>
 </div>
-@* <p>@ViewBag.Msg</p> *@
 
 
+ <p>@ViewBag.Msg</p> 
+
+}

@@ -144,7 +144,7 @@ namespace Clases
         private void PrecargaAdministradores()
         {
             Administrador admin1 = new Administrador("Pedro", "Rodríguez", "pedro.rodriguez@example.com", "adminpass1");
-            Administrador admin2 = new Administrador("Sofía", "Hernández", "s", "s");
+            Administrador admin2 = new Administrador("Sofía", "Hernández", "sofia@hernandez.com", "adminpass12");
             Administrador admin3 = new Administrador("David", "García", "david.garcia@example.com", "adminpass3");
             //Agrego los administradores a la lista de usuarios
             _usuarios.Add(admin1);
@@ -154,16 +154,16 @@ namespace Clases
 
         private void PrecargaClientes()
         {
-            Cliente c1 = new Cliente(1500.00, "Juan", "Pérez", "juan.perez@example.com", "pass123");
-            Cliente c2 = new Cliente(2000.50, "María", "Gómez", "maria.gomez@example.com", "mariapass");
+            Cliente c1 = new Cliente(1500.00, "Juan", "Pérez", "juan.perez@example.com", "pass12345");
+            Cliente c2 = new Cliente(2000.50, "María", "Gómez", "maria.gomez@example.com", "mariapass1");
             Cliente c3 = new Cliente(1200.75, "Carlos", "López", "carlos.lopez@example.com", "carlospass");
-            Cliente c4 = new Cliente(800.20, "Ana", "Martínez", "ana.martinez@example.com", "anapass");
+            Cliente c4 = new Cliente(800.20, "Ana", "Martínez", "ana.martinez@example.com", "anapass12");
             Cliente c5 = new Cliente(3000.00, "Luis", "Fernández", "luis.fernandez@example.com", "luifernpass");
-            Cliente c6 = new Cliente(1500.00, "Hector", "Pérez", "hector.perez@example.com", "pass123");
-            Cliente c7 = new Cliente(2000.50, "Pablo", "Gómez", "Pablo.gomez@example.com", "pass123");
-            Cliente c8 = new Cliente(1200.75, "Daniel", "López", "daniel.lopez@example.com", "pass123");
-            Cliente c9 = new Cliente(800.20, "Cecilia", "Martínez", "cecilia.martinez@example.com", "pass123");
-            Cliente c10 = new Cliente(3000.00, "Leticia", "Fernández", "leticia.fernandez@example.com", "pass123");
+            Cliente c6 = new Cliente(1500.00, "Hector", "Pérez", "hector.perez@example.com", "pass12345");
+            Cliente c7 = new Cliente(2000.50, "Pablo", "Gómez", "Pablo.gomez@example.com", "pass12345");
+            Cliente c8 = new Cliente(1200.75, "Daniel", "López", "daniel.lopez@example.com", "pass12345");
+            Cliente c9 = new Cliente(800.20, "Cecilia", "Martínez", "cecilia.martinez@example.com", "pass12345");
+            Cliente c10 = new Cliente(3000.00, "Leticia", "Fernández", "leticia.fernandez@example.com", "pass12345");
             //Agrego los clientes a la lista de usuarios
             _usuarios.Add(c1);
             _usuarios.Add(c2);
@@ -300,11 +300,20 @@ namespace Clases
 
 
             //Agrego ofertas a la subasta
+            try
+            {
             s1.AgregarOferta(new Oferta((GetClientePorNombre("Juan")), 125));
             s1.AgregarOferta(new Oferta((GetClientePorNombre("Carlos")), 350));
 
-            s2.AgregarOferta(new Oferta((GetClientePorNombre("Ana")), 350));
+            s2.AgregarOferta(new Oferta((GetClientePorNombre("Ana")), 250));
             s2.AgregarOferta(new Oferta((GetClientePorNombre("Luis")), 350));
+
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
             
 
 
