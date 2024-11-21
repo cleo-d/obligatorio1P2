@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Clases
 {
     //Esta clase podria ser abstracta y los metodos de Agregar Articulo (O VIRTUAL) estarian aca para poder agregar articulso desde una venta u subasta
-    public abstract class Publicacion : IValidable
+    public abstract class Publicacion : IValidable , IComparable<Publicacion>
     {
         #region PROPERTYS
         public int Id { get; set; }
@@ -77,6 +77,10 @@ namespace Clases
         public abstract void CerrarPublicacion(Usuario u, double unMonto);
         public abstract void GetRol();
         
+        public int CompareTo(Publicacion otra)
+        {
+            return FechaPublicacion.CompareTo(otra.FechaPublicacion);
+        }
 
     }
 }

@@ -18,11 +18,18 @@ namespace WebApp.Controllers
             return View(publicaciones);
         }
 
-        public IActionResult Detalles(int id)
+        public IActionResult Detalles(int id, string? mensaje)
         {
             Publicacion publicacionEncontrada = s.GetPublicacionPorId(id);
-            
 
+
+            if (mensaje != null)
+            {
+            ViewBag.Error = mensaje;
+
+            } 
+
+            
 
             return View(publicacionEncontrada);
         }

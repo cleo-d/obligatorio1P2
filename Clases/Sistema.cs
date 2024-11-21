@@ -36,6 +36,8 @@ namespace Clases
         }
         public List<Publicacion> GetPublicaciones()
         {
+            _publicaciones.Sort();
+
             return _publicaciones;
         }
         public List<Articulo> GetArticulos()
@@ -145,7 +147,7 @@ namespace Clases
         {
             Administrador admin1 = new Administrador("Pedro", "Rodríguez", "pedro.rodriguez@example.com", "adminpass1");
             Administrador admin2 = new Administrador("Sofía", "Hernández", "sofia@hernandez.com", "adminpass12");
-            Administrador admin3 = new Administrador("David", "García", "david.garcia@example.com", "adminpass3");
+            Administrador admin3 = new Administrador("David", "García", "admin", "123456789");
             //Agrego los administradores a la lista de usuarios
             _usuarios.Add(admin1);
             _usuarios.Add(admin2);
@@ -154,7 +156,7 @@ namespace Clases
 
         private void PrecargaClientes()
         {
-            Cliente c1 = new Cliente(1500.00, "Juan", "Pérez", "juan.perez@example.com", "pass12345");
+            Cliente c1 = new Cliente(1500.00, "Juan", "Pérez", "juan", "pass12345");
             Cliente c2 = new Cliente(2000.50, "María", "Gómez", "maria.gomez@example.com", "mariapass1");
             Cliente c3 = new Cliente(1200.75, "Carlos", "López", "carlos.lopez@example.com", "carlospass");
             Cliente c4 = new Cliente(800.20, "Ana", "Martínez", "ana.martinez@example.com", "anapass12");
@@ -342,19 +344,19 @@ namespace Clases
         {
             List<Articulo> articulos = new List<Articulo>
         {
-            new Articulo("Laptop", "Electrónica", 999.99),
-            new Articulo("Teléfono", "Electrónica", 599.99),
-            new Articulo("Silla", "Muebles", 120.50),
-            new Articulo("Mesa", "Muebles", 200.00),
-            new Articulo("Cámara", "Electrónica", 350.75),
-            new Articulo("Libro", "Papelería", 15.99),
-            new Articulo("Monitor", "Electrónica", 189.99),
-            new Articulo("Teclado", "Accesorios", 49.99),
-            new Articulo("Mouse", "Accesorios", 29.99),
+            new Articulo("Laptop", "Electrónica", 999),
+            new Articulo("Teléfono", "Electrónica", 599),
+            new Articulo("Silla", "Muebles", 120),
+            new Articulo("Mesa", "Muebles", 200),
+            new Articulo("Cámara", "Electrónica", 350),
+            new Articulo("Libro", "Papelería", 15),
+            new Articulo("Monitor", "Electrónica", 189),
+            new Articulo("Teclado", "Accesorios", 49),
+            new Articulo("Mouse", "Accesorios", 29),
             new Articulo("Impresora", "Electrónica", 250.00),
-            new Articulo("Lámpara", "Hogar", 45.50),
+            new Articulo("Lámpara", "Hogar", 45),
             new Articulo("Zapatos", "Ropa", 75.99),
-            new Articulo("Camiseta", "Ropa", 25.00),
+            new Articulo("Camiseta", "Ropa", 25),
             new Articulo("Refrigerador", "Electrodomésticos", 899.99),
             new Articulo("Lavadora", "Electrodomésticos", 750.00),
             new Articulo("Secadora", "Electrodomésticos", 600.00),

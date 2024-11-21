@@ -28,7 +28,7 @@
                                             <li>@a.Nombre</li>
                                         }
                                     </ul>
-                                    <h5>@p.PrecioPublicacion</h5>
+                                    <h5>@Math.Round(p.PrecioPublicacion, 2)</h5>
 
                                     @if (p.Estado == Estado.Abierta)
                                     {
@@ -93,7 +93,7 @@
 
 
                                 }
-                                else
+                                else if (p.Estado == Estado.Abierta)
                                 {
                                     <p>@Html.ActionLink("Ofertar", "Detalles", new { id = p.Id })</p>
                                 }

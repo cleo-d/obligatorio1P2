@@ -23,17 +23,17 @@ namespace WebApp.Controllers
 
             Oferta o = s.AltaOferta(usuarioOferta as Cliente, Monto);
 
-            //Agrego la oferta nueva a la lista de ofertas de la subasta
+           
             (publicacionEncontrada as Subasta).AgregarOferta(o);
+                
+           
 
-            return RedirectToAction("Index", "Publicacion");
+            return RedirectToAction("Detalles", "Publicacion", new { id = Id, mensaje = "Oferta Creada con exito" });
             }
             catch (Exception e)
             {
 
-                ViewBag.Msg = e.Message;
-                //como pasar el modelo a la vista de detalles para mostrarlo
-                return RedirectToAction("Detalles", "Publicacion", new { id = Id });
+                return RedirectToAction("Detalles", "Publicacion", new { id = Id, mensaje = e.Message });
 
             }
             
