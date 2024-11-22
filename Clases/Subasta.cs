@@ -50,21 +50,32 @@ namespace Clases
         {
             if (Estado == Estado.Abierta && u.Rol == "ADM")
             {
-                
                 Estado = Estado.Cerrada;
                 FechaCompra = DateTime.Now;
                 validarClienteCompra(u);
+            }
+            if (MejorOferta == null || MejorOferta.Cliente.Saldo < MejorOferta.Monto)
+            {
+                Estado = Estado.Cancelada;
             }
         }
 
         private void validarClienteCompra(Usuario u)
         {
-            if(MejorOferta != null)
+            if(MejorOferta != null && MejorOferta.Cliente.Saldo > MejorOferta.Monto)
             {
                 ClienteCompra = MejorOferta.Cliente;
                 UsuarioCierre = u;
                 ClienteCompra.Saldo -= MejorOferta.Monto;
             }
+            else
+            {
+                //AgarrarProximaOferta()
+                //foreach _listaOfertas
+                //Comparar oferta.monto > mejorOferta.monto
+            //Se pasa a la proxima oferta ya que el cliente que hizo la mejor oferta no tiene saldo suficiente
+            }
+
         }
 
         public override void GetRol()

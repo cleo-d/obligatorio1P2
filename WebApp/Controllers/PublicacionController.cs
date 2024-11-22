@@ -42,6 +42,7 @@ namespace WebApp.Controllers
 
             try
             {
+              
                 publicacionEncontrada.CerrarPublicacion(usuarioCierrePublicacion, publicacionEncontrada.PrecioPublicacion);
                 return RedirectToAction("Index");
             }
