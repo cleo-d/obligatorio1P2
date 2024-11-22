@@ -25,7 +25,6 @@ namespace Clases
         {
             OfertaRelampago = ofertaRelampago;
             PrecioVenta = precioVenta;
-            Validar();
             
         }
 
@@ -57,13 +56,6 @@ namespace Clases
 
         }
         #endregion
-
-        private void Validar()
-        {
-          //Este Metodo de ValidarSaldoParaVenta no se tendria que correr al momento que un usuario quiera hacer una compra?
-          //Dejo este metodo comentado ->
-          //  ValidarSaldoParaVenta();
-        }
 
         private void ValidarSaldoParaVenta()
         {

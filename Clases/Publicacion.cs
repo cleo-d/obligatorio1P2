@@ -25,7 +25,7 @@ namespace Clases
         public string Rol { get; set; }
 
         public double PrecioPublicacion { get; set; }
-        //Agregar Metodo que agarre el precio de la Venta o la mejor oferta de la Subasta
+
         #endregion
        #region CONSTRUCTORES
         public Publicacion()

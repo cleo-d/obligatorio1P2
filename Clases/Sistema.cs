@@ -66,7 +66,7 @@ namespace Clases
             }
             return clientesAux;
         }
-        //Metodo para dar de alta a un Usuario
+
 
         public void AltaCliente(Cliente c)
         {
@@ -425,20 +425,6 @@ namespace Clases
                 }
             }
             return null;
-        }
-
-        public Publicacion GetArticuloPorId(int id)
-        {
-            foreach (Publicacion publicacion in _publicaciones)
-            {
-                if (publicacion.Id == id)
-                {
-                    return publicacion;
-                }
-                
-            }
-            return null;
-            //HAY QUE VALIDAR QUE NO RETURNE NULL CUANDO SE LLAMA A ESTA FUNCION
         }
 
 		public Usuario Login(string email, string contrasenia)
