@@ -12,30 +12,41 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Publicacion> publicaciones = s.GetPublicaciones();
-            //puedo ya mandar las publicaciones ordenadas por fecha y q queden todas ordenadas 
-            
-            return View(publicaciones);
-        }
-
-        public IActionResult Detalles(int id, string? mensaje)
-        {
-            Publicacion publicacionEncontrada = s.GetPublicacionPorId(id);
-
-
-            if (mensaje != null)
+            if (HttpContext.Session.GetInt32("idLogeado") != null)
             {
-            ViewBag.Error = mensaje;
+                IEnumerable<Publicacion> publicaciones = s.GetPublicaciones();
+                //puedo ya mandar las publicaciones ordenadas por fecha y q queden todas ordenadas 
 
-            } 
+                return View(publicaciones);
+            }
+            else
+            {
+				return RedirectToAction("Index", "Home");
+			}
+            }
 
-            
+            public IActionResult Detalles(int id, string? mensaje)
+            {
+            if (HttpContext.Session.GetInt32("idLogeado") != null)
+            {
+                Publicacion publicacionEncontrada = s.GetPublicacionPorId(id);
 
-            return View(publicacionEncontrada);
-        }
 
-        
-        public IActionResult Comprar(int id)
+                if (mensaje != null)
+                {
+                    ViewBag.Error = mensaje;
+
+                }
+                return View(publicacionEncontrada);
+            }
+            else
+            {
+				return RedirectToAction("Index", "Home");
+			}
+            }
+
+
+            public IActionResult Comprar(int id)
         {
             Publicacion publicacionEncontrada = s.GetPublicacionPorId(id);
             Usuario usuarioCierrePublicacion = s.GetUsuarioPorId(HttpContext.Session.GetInt32("idLogeado"));
