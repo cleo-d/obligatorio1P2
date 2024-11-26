@@ -41,6 +41,7 @@ namespace Clases
             ValidarSaldoParaOferta();
         }
 
+        //
         private void ValidarSaldoParaOferta()
         {
             if (Cliente.Saldo < Monto)

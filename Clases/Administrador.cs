@@ -20,7 +20,8 @@ namespace Clases
         }
         #endregion  
 
-        public override void GetRol()
+        //Seteo el rol de un administrador
+        public override void SetRol()
         {
             Rol = "ADM";
         }

@@ -23,7 +23,7 @@ namespace Clases
         public Usuario()
         {
             Id = UltimoId++;
-            GetRol();
+            SetRol();
         }
 
         public Usuario(string nombre, string apellido, string email, string contrasenia)
@@ -34,7 +34,7 @@ namespace Clases
             Email = email;
             Contrasenia = contrasenia;
             Validar();
-			GetRol();
+			SetRol();
 		}
         #endregion
 
@@ -46,6 +46,7 @@ namespace Clases
             ValidarContrasenia();
         }
 
+        //Metodo que valida el nombre de un usuario
         private void ValidarNombre()
         {
             if (String.IsNullOrEmpty(Nombre))
@@ -53,6 +54,8 @@ namespace Clases
                 throw new Exception("El nombre no puede estar vacio");
             }
         }
+
+        //Metodo que valida el apellido de un usuario
         private void ValidarApellido()
         {
             if (String.IsNullOrEmpty(Apellido))
@@ -60,6 +63,8 @@ namespace Clases
                 throw new Exception("El apellido no puede estar vacio");
             }
         }
+
+        //Metodo para validar el email de un usuario
         private void ValidarEmail()
         {
             if (String.IsNullOrEmpty(Email))
@@ -67,6 +72,8 @@ namespace Clases
                 throw new Exception("El Email no puede estar vacio");
             }
         }
+
+        //Metodo que valida la contraseña de un usuario
         private void ValidarContrasenia()
         {
             if (Contrasenia.Length < 8)
@@ -76,7 +83,8 @@ namespace Clases
 
         }
 
-        public abstract void GetRol();
+        //Metodo polimorfico para setear el rol de cada usuario creado
+        public abstract void SetRol();
 
 
 

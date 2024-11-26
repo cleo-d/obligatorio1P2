@@ -31,6 +31,7 @@ namespace Clases
             ValidarSaldo();
         }
 
+        //Valido que el saldo del usuario tiene que ser positivo
         private void ValidarSaldo()
         {
             if (Saldo < 0)
@@ -39,7 +40,8 @@ namespace Clases
             }
         }
 
-        public override void GetRol()
+        //Seteo el rol de un Cliente
+        public override void SetRol()
         {
             Rol = "CLI";
         }

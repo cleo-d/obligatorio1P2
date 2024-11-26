@@ -42,15 +42,16 @@ namespace Clases
             ValidarPrecio();
         }
 
-
-
+        //Metodo que valida el nombre ingresado al crear un Articulo
         private void ValidarNombre()
         {
-           if(String.IsNullOrEmpty(Nombre))
+            if (String.IsNullOrEmpty(Nombre))
             {
                 throw new Exception("El nombre no puede estar vacio");
             }
         }
+
+        //Metodo que valida que la categoria no sea vacia al momento de crear un Articulo
         private void ValidarCategoria()
         {
             if (String.IsNullOrEmpty(Categoria))
@@ -58,6 +59,8 @@ namespace Clases
                 throw new Exception("La categoria no puede estar vacia");
             }
         }
+
+        //Metodo que valida el precio al momento de crear un Articulo
         private void ValidarPrecio()
         {
             if (Precio<0)
