@@ -1,14 +1,24 @@
 ﻿
-<h1>Login</h1>
-
-<form method="post">
-	<input type="text" name="Email" placeholder="Email" value="admin" />
-	<br />
-	<input type="text" name="Contrasenia" placeholder="Pass" value="123456789"/>
-	<br />
-
-	<input type="submit" value="Login" />
-	@Html.ActionLink("Crear Nuevo Usuario", "Create", "Cliente")
+<h1 class="text-center">Login</h1>
+<div class="d-flex justify-content-center">
+<form method="post"  class="row g-4">
+	<div class="col-4">
+		<label for="staticEmail2" class="visually-hidden">Email</label>
+		<input type="text" class="form-control-plaintext" name="Email" placeholder="Email">
+	</div>
+	<div class="col-4">
+		<label for="inputPassword2" class="visually-hidden">Password</label>
+		<input type="password" class="form-control" id="inputPassword2" name="Contrasenia" placeholder="Password">
+	</div>
+	<div class="col-4">
+		<button type="submit" class="btn btn-primary mb-3">Login</button>
+	</div>
+		<div class="col-12 ">
+		@Html.ActionLink("Crear Nuevo Usuario", "Create", "Cliente", null, new { @class = "btn btn-primary btn-sm d-inline-block" })
+	</div>
+	
+	
 </form>
+</div>
 
 <p>@ViewBag.Msg</p>

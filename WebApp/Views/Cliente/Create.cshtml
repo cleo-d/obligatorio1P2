@@ -1,20 +1,31 @@
 ﻿@using Clases
 
 
-<h1>Registro de Clientes</h1>
-
-
-<form method="post">
-
-    <input type="text" name="Nombre" placeholder="Nombre" />
-    <br />
-    <input type="text" name="Apellido" placeholder="Apellido" />
-    <br />
-    <input type="text" name="Email" placeholder="Email" />
-    <br />
-    <input type="text" name="Contrasenia" placeholder="Contraseña" />
-    <br />
-    <input type="submit" value="Crear Cliente" />
+<h1 class="text-center mb-5">Registro de Clientes</h1>
+<div class=" d-flex justify-content-center">
+<div class="col-3 ">
+<form method="post"  >
+	<div class="col-auto">
+		<label class="visually-hidden">Nombre</label>
+		<input type="text" class="form-control mb-2" name="Nombre" placeholder="Nombre">
+	</div>
+	<div class="col-auto">
+		<label class="visually-hidden">Apellido</label>
+		<input type="text" class="form-control mb-2" name="Apellido" placeholder="Apellido">
+	</div>
+	<div class="col-auto">
+		<label for="staticEmail2" class="visually-hidden">Email</label>
+		<input type="text" class="form-control mb-2" name="Email" placeholder="Email">
+	</div>
+	
+	<div class="col-auto">
+		<label for="inputPassword2" class="visually-hidden">Contraseña</label>
+		<input type="password" class="form-control mb-2 " id="inputPassword2" name="Contrasenia" placeholder="Contraseña">
+	</div> 
+	<div class="col-auto  d-flex justify-content-end">
+		<button type="submit" class="btn btn-primary mb-3  ">Crear cliente</button>
+	</div>
 </form>
-
+</div>
+</div>
 <p>@ViewBag.Msg</p>

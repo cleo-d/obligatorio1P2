@@ -24,8 +24,10 @@
                     {
                         @if (Model.Rol == "VEN")
                         {
-                            @Html.ActionLink("Comprar", "Comprar", new { id = @Model.Id })
-                            ;
+                              <div>
+                                    @Html.ActionLink("Comprar", "Comprar", new { id = @Model.Id }, new { @class = "btn btn-primary btn-sm d-inline-block" })
+                                                                            </div>
+                         
                         }
                         else if (Model.Rol == "SUB")
                         {
@@ -44,8 +46,10 @@
                     {
                         if (Model.Rol == "SUB")
                         {
-                            @Html.ActionLink("Cerrar Subasta", "Comprar", new { id = @Model.Id })
-                            ;
+                            <div>
+                                    @Html.ActionLink("Cerrar Subasta", "Comprar", new { id = @Model.Id }, new { @class = "btn btn-primary btn-sm d-inline-block" })
+                                                                            </div>
+                            
                         }
                     }                 
                 </div>

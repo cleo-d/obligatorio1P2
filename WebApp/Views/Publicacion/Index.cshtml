@@ -1,24 +1,26 @@
 ﻿@using Clases
 
 @model IEnumerable<Clases.Publicacion>
-
+<div class="d-flex justify-content-center">
+<div class="col-10 ">
 @if (Context.Session.GetString("rolLogeado") == "CLI")
 {
     <h1 class="text-center">Ventas</h1>
+    
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
        @foreach (Publicacion p in Model)
        {
           if (p.Rol == "VEN")
           {
-                <div class="col">
-                    <div class="card h-100 mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
+                     <div class="col ">
+                    <div class="card h-100 mb-3 d-flex flex-colum justify-content-between" style="max-width: 540px;">
+                                <div class="row g-0">
                         <div class="col-md-4">
                             <img src="..." class="img-fluid rounded-start" alt="...">
                         </div>
                         <div class="col-md-8">
-                            <div class="card-body">
+                                        <div class="card-body ">
                                     <h4 class="card-title">@p.Nombre</h4>
                                     <h5 class="card-title">Estado: @p.Estado</h5>
 
@@ -30,21 +32,23 @@
                                     </ul>
                                     <h5>@Math.Round(p.PrecioPublicacion, 2)</h5>
 
-                                    @if (p.Estado == Estado.Abierta)
-                                    {
-
-                                        <p class="text-end">
-                                            @Html.ActionLink("Comprar", "Detalles", new { id = p.Id })
-
-                                        </p>
-                                    }
-                                    else
-                                    {
-                                        <p></p>
-                                    }
+                                   
                             </div>
                         </div>
-                    </div>
+                                   
+                                </div>
+                                @if (p.Estado == Estado.Abierta)
+                                {
+                                                                        <div class="d-flex justify-content-end">
+                                        @Html.ActionLink("Comprar", "Detalles", new { id = p.Id }, new { @class = "btn btn-primary btn-sm d-inline-block" })
+                                                                            </div>
+
+
+                                }
+                                else
+                                {
+                                                                        <p></p>
+                                }
                 </div>
                 </div>
           }
@@ -60,7 +64,7 @@
         if (p.Rol == "SUB")
         {
             <div class="col">
-                <div class="card h-100 mb-3" style="max-width: 540px;">
+                        <div class="card h-100 mb-3 d-flex flex-colum justify-content-between " style="max-width: 540px;">
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img src="..." class="img-fluid rounded-start" alt="...">
@@ -79,29 +83,43 @@
                                 </ul>
                                 <h5>Mejor oferta: @p.PrecioPublicacion</h5>
 
-                                @if (Context.Session.GetString("rolLogeado") == "ADM")
-                                {
-                                    @if (p.Estado == Estado.Abierta)
-                                    {
-                                        <p>@Html.ActionLink("Cerrar subasta", "Detalles", new { id = p.Id })</p>
-                                    }
-                                    else
-                                    {
-                                        <p>Fecha cerrada: @p.FechaCompra.ToShortDateString()</p>
-                                        <p>Subasta Cerrada</p>
-                                    }
-
-
-                                }
-                                else if (p.Estado == Estado.Abierta)
-                                {
-                                    <p>@Html.ActionLink("Ofertar", "Detalles", new { id = p.Id })</p>
-                                }
+                               
                             </div>
                         </div>
                     </div>
+                            @if (Context.Session.GetString("rolLogeado") == "ADM")
+                            {
+                                @if (p.Estado == Estado.Abierta)
+                                {
+                                    <div class="d-flex justify-content-end">
+                                    @Html.ActionLink("Cerrar subasta", "Detalles", new { id = p.Id }, new { @class = "btn btn-primary btn-sm d-inline-block" })
+                                                                                        </div>
+                                                       
+                                }
+                                else
+                                {
+                                    @if (p.Estado == Estado.Cerrada)
+                                    {
+                                                                <p>Cliente de compra: @p.ClienteCompra.Nombre @p.ClienteCompra.Apellido</p>
+                                    }
+                                                        <p>Fecha @p.Estado: @p.FechaCompra.ToShortDateString()</p>
+                                                        <p>Subasta @p.Estado</p>
+                                }
+
+
+                            }
+                            else if (p.Estado == Estado.Abierta)
+                            {
+
+                                                                                    <div class="d-flex justify-content-end">
+                                    @Html.ActionLink("Ofertar", "Detalles", new { id = p.Id }, new { @class = "btn btn-primary btn-sm d-inline-block" })
+                                                                                        </div>
+                                                <p>@Html.ActionLink("", "Detalles", new { id = p.Id })</p>
+                            }
                 </div>
             </div>
         }
     }
+</div>
+</div>
 </div>

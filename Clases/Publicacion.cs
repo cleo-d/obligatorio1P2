@@ -65,7 +65,7 @@ namespace Clases
             return _listaArticulos;
         }
 
-        //motodo que agregue un articulo a la lista de articulos de la punblicacion
+        //motodo que agregue un articulo a la lista de articulos de la publicacion
         public void AgregarArticulo(Articulo unArticulo)
         {
             _listaArticulos.Add(unArticulo);

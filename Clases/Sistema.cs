@@ -73,12 +73,24 @@ namespace Clases
             try
             {
                 c.Validar();
+                ValidarSiExisteCliente(c.Email);
                 _usuarios.Add(c);
             }
             catch (Exception e)
             {
 
                 throw e;
+            }
+        }
+
+        private void ValidarSiExisteCliente(string email)
+        {
+            foreach (Usuario u in _usuarios)
+            {
+                if(u.Email == email)
+                {
+                    throw new Exception("Usuario no valido");
+                }
             }
         }
 

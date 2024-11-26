@@ -50,32 +50,39 @@ namespace Clases
         {
             if (Estado == Estado.Abierta && u.Rol == "ADM")
             {
-                Estado = Estado.Cerrada;
-                FechaCompra = DateTime.Now;
-                validarClienteCompra(u);
-            }
-            if (MejorOferta == null || MejorOferta.Cliente.Saldo < MejorOferta.Monto)
-            {
-                Estado = Estado.Cancelada;
+                if(MejorOferta == null)
+                {
+                    Estado = Estado.Cancelada;
+                    FechaCompra = DateTime.Now;
+                }
+                else
+                {
+                    PrecioPublicacion = 0;
+                    BuscarMejorOferta();
+                    Estado = Estado.Cerrada;
+                    FechaCompra = DateTime.Now;
+                    ClienteCompra = MejorOferta.Cliente;
+                    UsuarioCierre = u;
+                    ClienteCompra.Saldo -= MejorOferta.Monto;
+                }
             }
         }
-
-        private void validarClienteCompra(Usuario u)
+        //Busco la mejor oferta de la lista de ofertas de la subasta
+        private void BuscarMejorOferta()
         {
-            if(MejorOferta != null && MejorOferta.Cliente.Saldo > MejorOferta.Monto)
+            foreach (Oferta o in _listaOfertas)
             {
-                ClienteCompra = MejorOferta.Cliente;
-                UsuarioCierre = u;
-                ClienteCompra.Saldo -= MejorOferta.Monto;
-            }
-            else
-            {
-                //AgarrarProximaOferta()
-                //foreach _listaOfertas
-                //Comparar oferta.monto > mejorOferta.monto
-            //Se pasa a la proxima oferta ya que el cliente que hizo la mejor oferta no tiene saldo suficiente
-            }
 
+                if (o.Monto > PrecioPublicacion)
+                {
+                    if (o.Cliente.Saldo > PrecioPublicacion)
+                    {
+                        PrecioPublicacion = o.Monto;
+                        MejorOferta = o;
+                    }
+                    
+                }
+            }
         }
 
         public override void GetRol()
