@@ -101,8 +101,6 @@ namespace Clases
                     throw e;
                     }
             }
-
-
         }
 
         private void RestarSaldoUsuario(Cliente u, double unMonto)

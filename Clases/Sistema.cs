@@ -143,7 +143,7 @@ namespace Clases
             return publicacionesEntreFechas;
 
         }
-
+        //Funciones de Precarga de datos
         #region PRECARGADATOS
 
         private void PrecargaDatos()
@@ -154,18 +154,20 @@ namespace Clases
             PrecargaSubastas();
             PrecargaVentas(); 
         }
-
+        
+        //Precarga de Administradores
         private void PrecargaAdministradores()
         {
             Administrador admin1 = new Administrador("Pedro", "Rodríguez", "pedro.rodriguez@example.com", "adminpass1");
             Administrador admin2 = new Administrador("Sofía", "Hernández", "sofia@hernandez.com", "adminpass12");
             Administrador admin3 = new Administrador("David", "García", "admin", "123456789");
-            //Agrego los administradores a la lista de usuarios
-            _usuarios.Add(admin1);
-            _usuarios.Add(admin2);
-            _usuarios.Add(admin3);
+			//Agrego los administradores a la lista de usuarios
+			AgregarUsuario(admin1);
+			AgregarUsuario(admin2);
+			AgregarUsuario(admin3);
         }
 
+        //Precarga de clientes
         private void PrecargaClientes()
         {
             Cliente c1 = new Cliente(1500.00, "Juan", "Pérez", "juan", "pass12345");
@@ -179,19 +181,27 @@ namespace Clases
             Cliente c9 = new Cliente(800.20, "Cecilia", "Martínez", "cecilia.martinez@example.com", "pass12345");
             Cliente c10 = new Cliente(3000.00, "Leticia", "Fernández", "leticia.fernandez@example.com", "pass12345");
             //Agrego los clientes a la lista de usuarios
-            _usuarios.Add(c1);
-            _usuarios.Add(c2);
-            _usuarios.Add(c3);
-            _usuarios.Add(c4);
-            _usuarios.Add(c5);
-            _usuarios.Add(c6);
-            _usuarios.Add(c7);
-            _usuarios.Add(c8);
-            _usuarios.Add(c9);
-            _usuarios.Add(c10);
+            AgregarUsuario(c1);
+			AgregarUsuario(c1);
+			AgregarUsuario(c2);
+			AgregarUsuario(c3);
+			AgregarUsuario(c4);
+			AgregarUsuario(c5);
+			AgregarUsuario(c6);
+			AgregarUsuario(c7);
+			AgregarUsuario(c8);
+			AgregarUsuario(c9);
+			AgregarUsuario(c10);
         }
 
-        private void PrecargaVentas()
+        //Metodo que agrega un cliente a la lista de usuarios
+		private void AgregarUsuario(Usuario c1)
+		{
+            _usuarios.Add(c1);
+		}
+
+		//Precarga de Ventas
+		private void PrecargaVentas()
         {
             Venta v1 = new Venta(true, 100, "Productos de Escritorio", Estado.Abierta, new DateTime(2023, 01, 23));
             Venta v2 = new Venta(true, 100, "Productos de Electronica", Estado.Abierta, new DateTime(2023, 02, 23));
@@ -243,25 +253,29 @@ namespace Clases
             v10.AgregarArticulo(GetArticuloPorNombre("Bicicleta"));
             v10.AgregarArticulo(GetArticuloPorNombre("Raqueta de tenis"));
 
-
             //Agrego las ventas a la lista de publicaciones
-            _publicaciones.Add(v1);
-            _publicaciones.Add(v2);
-            _publicaciones.Add(v3);
-            _publicaciones.Add(v4);
-            _publicaciones.Add(v5);
-            _publicaciones.Add(v6);
-            _publicaciones.Add(v7);
-            _publicaciones.Add(v8);
-            _publicaciones.Add(v9);
-            _publicaciones.Add(v10);
-
-
-            //v1.CerrarPublicacion();
+            AgregarPublicacion(v1);
+			AgregarPublicacion(v1);
+			AgregarPublicacion(v2);
+			AgregarPublicacion(v3);
+			AgregarPublicacion(v4);
+			AgregarPublicacion(v5);
+			AgregarPublicacion(v6);
+			AgregarPublicacion(v7);
+			AgregarPublicacion(v8);
+			AgregarPublicacion(v9);
+			AgregarPublicacion(v10);
 
         }
-     
-        private void PrecargaSubastas()
+
+        //Funcion para agregar publicaciones a la lista en sistema
+		private void AgregarPublicacion(Publicacion v1)
+		{
+            _publicaciones.Add(v1);
+		}
+
+		//Precarga de subastas
+		private void PrecargaSubastas()
         {
             Subasta s1 = new Subasta("Limpieza", Estado.Abierta, new DateTime(2024, 01, 25));
             Subasta s2 = new Subasta("Instrumentos", Estado.Abierta, new DateTime(2024, 02, 25));
@@ -283,7 +297,6 @@ namespace Clases
             s2.AgregarArticulo(GetArticuloPorNombre("Estuche de guitarra"));
             s2.AgregarArticulo(GetArticuloPorNombre("Parlante"));
 
-
             s3.AgregarArticulo(GetArticuloPorNombre("Laptop"));
             s3.AgregarArticulo(GetArticuloPorNombre("Piano"));
             s3.AgregarArticulo(GetArticuloPorNombre("Guitarra"));
@@ -300,18 +313,14 @@ namespace Clases
             s6.AgregarArticulo(GetArticuloPorNombre("Libro"));
             s6.AgregarArticulo(GetArticuloPorNombre("Estantería"));
 
-
             s8.AgregarArticulo(GetArticuloPorNombre("Audífonos"));
             s8.AgregarArticulo(GetArticuloPorNombre("Mochila"));
-
 
             s9.AgregarArticulo(GetArticuloPorNombre("Zapatos"));
             s9.AgregarArticulo(GetArticuloPorNombre("Camiseta"));
 
-
             s10.AgregarArticulo(GetArticuloPorNombre("Bicicleta"));
             s10.AgregarArticulo(GetArticuloPorNombre("Raqueta de tenis"));
-
 
             //Agrego ofertas a la subasta
             try
@@ -328,30 +337,21 @@ namespace Clases
 
                 throw e;
             }
-            
-
-
-
-
-        
-
-            
-
-            _publicaciones.Add(s1);
-            _publicaciones.Add(s2);
-            _publicaciones.Add(s3);
-            _publicaciones.Add(s4);
-            _publicaciones.Add(s5);
-            _publicaciones.Add(s6);
-            _publicaciones.Add(s7);
-            _publicaciones.Add(s8);
-            _publicaciones.Add(s9);
-            _publicaciones.Add(s10);
+            //Agrego las subastas a la lista de publicaciones en sistema
+			AgregarPublicacion(s1);
+			AgregarPublicacion(s2);
+			AgregarPublicacion(s3);
+			AgregarPublicacion(s4);
+            AgregarPublicacion(s5);
+            AgregarPublicacion(s6);
+            AgregarPublicacion(s7);
+            AgregarPublicacion(s8);
+            AgregarPublicacion(s9);
+            AgregarPublicacion(s10);
 
         }
 
-    
-
+        //Precarga de articulos
         private void PrecargaArticulos()
         {
             List<Articulo> articulos = new List<Articulo>
@@ -408,8 +408,6 @@ namespace Clases
 
             _articulos.AddRange(articulos);
 
-
-
         }
         #endregion
 
@@ -439,6 +437,7 @@ namespace Clases
             return null;
         }
 
+        //Funcion que valida los datos ingresados en el formulario de login
 		public Usuario Login(string email, string contrasenia)
 		{
             foreach (Usuario u in _usuarios)
@@ -451,6 +450,7 @@ namespace Clases
             }return null;
         }
 
+        //Funcion que encuentra una publicacion por id
         public Publicacion GetPublicacionPorId(int id)
         {
             Publicacion pEncontrada = null;
@@ -465,6 +465,7 @@ namespace Clases
             return pEncontrada;
         }
 
+        //Funcion que encuentra un usuario por su id
         public Usuario GetUsuarioPorId(int? v)
         {
             foreach (Usuario u in _usuarios)
@@ -477,6 +478,7 @@ namespace Clases
             return null;
         }
 
+        //Funcion para cargar saldo a un usuario
 		public void CargarSaldoUsuario(Usuario u, double saldo)
 		{
 			Cliente u2 = u as Cliente;
@@ -484,6 +486,7 @@ namespace Clases
             u2.Saldo += saldo;
 		}
 
+        //Funcion para crear ofertas
         public Oferta AltaOferta(Cliente c, double unMonto)
         {
             Oferta o = null;

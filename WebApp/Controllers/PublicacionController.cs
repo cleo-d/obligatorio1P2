@@ -14,8 +14,7 @@ namespace WebApp.Controllers
         {
             if (HttpContext.Session.GetInt32("idLogeado") != null)
             {
-                IEnumerable<Publicacion> publicaciones = s.GetPublicaciones();
-                //puedo ya mandar las publicaciones ordenadas por fecha y q queden todas ordenadas 
+                IEnumerable<Publicacion> publicaciones = s.GetPublicaciones(); 
 
                 return View(publicaciones);
             }
