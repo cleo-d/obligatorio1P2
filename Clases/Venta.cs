@@ -27,7 +27,7 @@ namespace Clases
             PrecioVenta = precioVenta;
             
         }
-
+        #endregion
         private void CalcularPrecio()
         {
             double precioAux = 0;
@@ -55,12 +55,14 @@ namespace Clases
             }
 
         }
-        #endregion
+        
 
         private void ValidarSaldoParaVenta()
         {
-            if (ClienteCompra.Saldo < PrecioVenta)
+            if (ClienteCompra.Saldo < PrecioPublicacion)
             {
+                ClienteCompra = null;
+                UsuarioCierre = null;
                 throw new Exception("No tiene saldo para realizar la compra de la publicacion");
             }
         }

@@ -59,8 +59,8 @@ namespace WebApp.Controllers
             catch (Exception e)
             {
 
-                ViewBag.Msg = e.Message;
-                return RedirectToAction("Detalles", new { id = id });
+               
+                return RedirectToAction("Detalles", new { id = id, mensaje = e.Message });
             }
             
 
